@@ -5843,11 +5843,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Consola\\HospiEnCasa.Consola.csproj",
+      "projectUniqueName": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Consola\\HospiEnCasa.Consola.csproj",
       "projectName": "HospiEnCasa.Consola",
-      "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Consola\\HospiEnCasa.Consola.csproj",
+      "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Consola\\HospiEnCasa.Consola.csproj",
       "packagesPath": "C:\\Users\\mafia\\.nuget\\packages\\",
-      "outputPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Consola\\obj\\",
+      "outputPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Consola\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -5870,11 +5870,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj": {
-              "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj"
+            "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj": {
+              "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj"
             },
-            "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Persistencia\\HospiEnCasa.Persistencia.csproj": {
-              "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Persistencia\\HospiEnCasa.Persistencia.csproj"
+            "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Persistencia\\HospiEnCasa.Persistencia.csproj": {
+              "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Persistencia\\HospiEnCasa.Persistencia.csproj"
             }
           }
         }

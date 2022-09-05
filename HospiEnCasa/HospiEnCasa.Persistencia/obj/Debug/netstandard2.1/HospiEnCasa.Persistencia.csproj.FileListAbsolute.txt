@@ -51,3 +51,16 @@ E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\ne
 E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.csproj.CoreCompileInputs.cache
 E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.dll
 E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.pdb
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.csproj.AssemblyReference.cache
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.AssemblyInfoInputs.cache
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.AssemblyInfo.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.csproj.CoreCompileInputs.cache
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.dll
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.pdb
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\bin\Debug\netstandard2.1\HospiEnCasa.Persistencia.deps.json
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\bin\Debug\netstandard2.1\HospiEnCasa.Persistencia.dll
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\bin\Debug\netstandard2.1\HospiEnCasa.Persistencia.pdb
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\bin\Debug\netstandard2.1\HospiEnCasa.Dominio.dll
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\bin\Debug\netstandard2.1\HospiEnCasa.Dominio.pdb
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Persistencia\obj\Debug\netstandard2.1\HospiEnCasa.Persistencia.csproj.CopyComplete

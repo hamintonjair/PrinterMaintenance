@@ -48,3 +48,13 @@ E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstan
 E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.csproj.CoreCompileInputs.cache
 E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.dll
 E:\Mision_tic\ciclo_3\Proyecto\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.pdb
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\bin\Debug\netstandard2.0\HospiEnCasa.Dominio.deps.json
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\bin\Debug\netstandard2.0\HospiEnCasa.Dominio.dll
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\bin\Debug\netstandard2.0\HospiEnCasa.Dominio.pdb
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.csproj.AssemblyReference.cache
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.AssemblyInfoInputs.cache
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.AssemblyInfo.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.csproj.CoreCompileInputs.cache
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.dll
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.Dominio\obj\Debug\netstandard2.0\HospiEnCasa.Dominio.pdb

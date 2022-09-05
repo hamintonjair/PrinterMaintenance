@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj": {}
+    "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj": {}
   },
   "projects": {
-    "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj": {
+    "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj",
+        "projectUniqueName": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj",
         "projectName": "HospiEnCasa.Dominio",
-        "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj",
+        "projectPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Dominio\\HospiEnCasa.Dominio.csproj",
         "packagesPath": "C:\\Users\\mafia\\.nuget\\packages\\",
-        "outputPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Dominio\\obj\\",
+        "outputPath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

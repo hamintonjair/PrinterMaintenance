@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z+TZ7lSqAgj1WHR8aVs/02vQQGopEeryls7qG/jM2sMTIunXKoctPlffD7CKlrV40C1CgBT/z2VqHlBJEzBmaQ==",
+  "dgSpecHash": "u3kk/IIWUoyKx+nxllIjEOKEfPqY4eA9mzfU5yu97r7pMjSd3MHK/g51MuzwVtPc/N2VlXu5PGVerrAPUswuQA==",
   "success": true,
-  "projectFilePath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\HospiEnCasa\\HospiEnCasa.Consola\\HospiEnCasa.Consola.csproj",
+  "projectFilePath": "E:\\Mision_tic\\ciclo_3\\Proyecto\\PrinterMaintenance\\HospiEnCasa\\HospiEnCasa.Consola\\HospiEnCasa.Consola.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mafia\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\mafia\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
