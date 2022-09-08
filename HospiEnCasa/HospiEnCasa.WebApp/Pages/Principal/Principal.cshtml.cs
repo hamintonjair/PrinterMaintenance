@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace HospiEnCasa.WebApp.Pages.Login
+namespace HospiEnCasa.WebApp.Pages.Principal
 {
-    public class GestionLogin : PageModel
+    public class Principal : PageModel
     {
-        private readonly ILogger<GestionLogin> _logger;
+        private readonly ILogger<Principal> _logger;
 
-        public GestionLogin(ILogger<GestionLogin> logger)
+        public Principal(ILogger<Principal> logger)
         {
             _logger = logger;
         }

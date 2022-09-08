@@ -23,7 +23,6 @@ E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\HospiEnCasa.WebApp.TagHelpers.output.cache
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\HospiEnCasa.WebApp.RazorCoreGenerate.cache
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
-E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -39,8 +38,9 @@ E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\ImpFinalizadas\GestionImpFinalizada.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Impresion3D\GestionImpresion3D.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Impresoras\GestionImpresora.cshtml.g.cs
-E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Login\GestionLogin.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Personas\GestionPersona.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Repuestos\GestionRepuesto.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Revision\GestionRevision.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Seguros\GestionSeguro.cshtml.g.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Principal\Principal.cshtml.g.cs

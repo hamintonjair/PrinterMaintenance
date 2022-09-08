@@ -9,15 +9,16 @@
 
 
 <div class="row m-4" style="padding-top: 10px;">
-    <div class="col-sm-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Registrar
-        </button>
-    </div>
-  
+   <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Funcionario</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal1">Profesión</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal2">Rol</button>
+</div>
+
 </div>
 
 <div id="container" class="container">
-    <div margin:0 class="col-sm-12">
+    <div margin:0 class="col-sm-1">
         <table id="customerDatatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
             <thead>
                 <tr>
@@ -148,12 +149,13 @@
 </div>
 
 
+<!--Registro de funcionarios  -->
 <div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header " style="background-color:#2668AC ;" >
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
+            <div class="modal-header " style="background-color:#2668AC ;">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo registro de funcionarios</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -185,10 +187,10 @@
                         <div class="form-group col-md-4">
                             <label>Fecha de Nacimiento</label>
                             <input type="text" class="form-control" type="date" id="start" name="trip-start" value=""
-                                min="1900-01-01" max="2040-12-31">
+                                min="1900-01-01" max="2040-12-31" placeholder="Fecha de Nacimiento">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Dirección (<font color="red">*</font>)</label>
+                            <label>Dirección </label>
                             <input type="text" class="form-control" placeholder="Direccion">
                         </div>
                     </div>
@@ -225,9 +227,90 @@
                 </form>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                 <button type="button" class="btn btn-primary" >Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success">Guardar</button>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Registro de estudios  -->
+<div class="modal fade" id="FormModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header " style="background-color:#2668AC ;">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo registro - Nivel de estudio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p class="text-primary">
+                        Los campos con asterisco (<font color="red">*</font>) son obligatorios.
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Estudio o Profesion(<font color="red">*</font>)</label>
+                            <input type="text" class="form-control" placeholder="Tipo de estudio">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Registro de roles  -->
+<div class="modal fade" id="FormModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header " style="background-color:#2668AC ;">
+                <h5 class="modal-title" id="exampleModalLabel">Asignar rol</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p class="text-primary">
+                        Los campos con asterisco (<font color="red">*</font>) son obligatorios.
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Usuario (<font color="red">*</font>)</label>
+                            <select type="Persona" class="form-control">
+                                <option value="">Seleccionar..</option>
+                                <option value="">1</option>
+                                <option value="">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Rol(<font color="red">*</font>)</label>
+                            <input type="text" class="form-control" placeholder="Rol">
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>Password(<font color="red">*</font>)</label>
+                            <input type="text" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>
