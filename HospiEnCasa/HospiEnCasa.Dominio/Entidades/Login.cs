@@ -10,8 +10,7 @@ namespace HospiEnCasa.Dominio
     {
        public int id { get; set; }    
        public string password { get; set; }   
-       public  Rol rol { get; set; } 
+      // public  Rol rol { get; set; } 
 
-    
     }
 }

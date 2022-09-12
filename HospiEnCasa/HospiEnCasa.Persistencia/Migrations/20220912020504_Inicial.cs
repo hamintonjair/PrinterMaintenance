@@ -27,8 +27,8 @@ namespace HospiEnCasa.Persistencia.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     n_Repuesto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    cantidad = table.Column<int>(type: "int", nullable: false),
-                    valor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    cantidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    valor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     tipo_repuesto = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fecha_compra = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -45,7 +45,7 @@ namespace HospiEnCasa.Persistencia.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     tipo_seguro = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    precio = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    precio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fecha_activacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fecha_vencimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -66,7 +66,9 @@ namespace HospiEnCasa.Persistencia.Migrations
                     telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fecha_nacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    nivelEstudioid = table.Column<int>(type: "int", nullable: true)
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    nivelEstudioid = table.Column<int>(type: "int", nullable: true),
+                    socio = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,8 +90,7 @@ namespace HospiEnCasa.Persistencia.Migrations
                     tipo_Rol = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     personaid = table.Column<int>(type: "int", nullable: true),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    rolid = table.Column<int>(type: "int", nullable: true)
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,12 +99,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                         name: "FK_Roles_Personas_personaid",
                         column: x => x.personaid,
                         principalTable: "Personas",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Roles_Roles_rolid",
-                        column: x => x.rolid,
-                        principalTable: "Roles",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -129,9 +124,9 @@ namespace HospiEnCasa.Persistencia.Migrations
                     seguroid = table.Column<int>(type: "int", nullable: true),
                     cliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Tipo_impresion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    cantidad = table.Column<int>(type: "int", nullable: true),
-                    precio = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    valor = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    cantidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    precio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    valor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fecha_revision = table.Column<DateTime>(type: "datetime2", nullable: true),
                     personaid = table.Column<int>(type: "int", nullable: true),
                     compraid = table.Column<int>(type: "int", nullable: true),
@@ -169,11 +164,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                 name: "IX_Roles_personaid",
                 table: "Roles",
                 column: "personaid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Roles_rolid",
-                table: "Roles",
-                column: "rolid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TipoImpresoras_compraid",

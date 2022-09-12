@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospiEnCasa.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220905062503_Inicial")]
+    [Migration("20220912020504_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,9 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<string>("direccion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("fecha_nacimiento")
                         .HasColumnType("datetime2");
 
@@ -60,6 +63,9 @@ namespace HospiEnCasa.Persistencia.Migrations
 
                     b.Property<string>("nombre")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("socio")
+                        .HasColumnType("int");
 
                     b.Property<string>("telefono")
                         .HasColumnType("nvarchar(max)");
@@ -82,14 +88,14 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("cantidad")
-                        .HasColumnType("int");
+                    b.Property<string>("cantidad")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("n_Repuesto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("valor")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("valor")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
@@ -140,8 +146,8 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<DateTime>("fecha_vencimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("precio")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("precio")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("tipo_seguro")
                         .HasColumnType("nvarchar(max)");
@@ -188,11 +194,6 @@ namespace HospiEnCasa.Persistencia.Migrations
             modelBuilder.Entity("HospiEnCasa.Dominio.Login", b =>
                 {
                     b.HasBaseType("HospiEnCasa.Dominio.Rol");
-
-                    b.Property<int?>("rolid")
-                        .HasColumnType("int");
-
-                    b.HasIndex("rolid");
 
                     b.HasDiscriminator().HasValue("Login");
                 });
@@ -246,14 +247,14 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<string>("Tipo_impresion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("cantidad")
-                        .HasColumnType("int");
+                    b.Property<string>("cantidad")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("cliente")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("precio")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("precio")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Impresiones3D");
                 });
@@ -274,8 +275,8 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<int?>("personaid")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("valor")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("valor")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("compraid");
 
@@ -300,15 +301,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .HasForeignKey("personaid");
 
                     b.Navigation("persona");
-                });
-
-            modelBuilder.Entity("HospiEnCasa.Dominio.Login", b =>
-                {
-                    b.HasOne("HospiEnCasa.Dominio.Rol", "rol")
-                        .WithMany()
-                        .HasForeignKey("rolid");
-
-                    b.Navigation("rol");
                 });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresora", b =>

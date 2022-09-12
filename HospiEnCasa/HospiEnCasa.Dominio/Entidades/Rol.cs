@@ -11,6 +11,7 @@ namespace HospiEnCasa.Dominio
        public string tipo_Rol { get; set; }   
        public string password { get; set; }
        public Persona persona { get; set; }  
+       public string Discriminator { get; set; } 
 
     }
 }

@@ -88,3 +88,6 @@ E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\bin\Debug\netcoreapp3.1\HospiEnCasa.Persistencia.dll
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\bin\Debug\netcoreapp3.1\HospiEnCasa.Dominio.pdb
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\bin\Debug\netcoreapp3.1\HospiEnCasa.Persistencia.pdb
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Personas\NivelStudio.cshtml.g.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Personas\Rol.cshtml.g.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Impresoras\Tipo_Impresora.cshtml.g.cs

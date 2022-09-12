@@ -1,28 +1,54 @@
-$().ready(function(){
+// $(document).on('FormModal1', function (e){
+//     e.preventDefaul();
+
+//     var estudio = { "Id": $("#Id").val(), "NivelEstudio": $("#nivelEstudio").val() }
+   
+//     $.ajax({   
+
+//         type: 'POST',
+//         url: "/Personas/GestionPersona?handler=CreateStudios",
+//         contentType: "application/json; charset=utf-8",
+//         dataType: "html",
+//         headers: {
+//             "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+//         },
+//         data: JSON.stringify(estudio),
+//     })
+//     . done(function (result) {
+//         alert(result);
+//         location. reload();
+//     })
+//     . fail(function (error) {
+//         alert(error);
+//     });
+
+//  });
+
+//  $().ready(function(){
     
-    $("#form-estudio").validate({
+//     $("#FormModal1").validate({
 
-        reglas : {
-            nombre : {
-                nivelEstudio: true,
-                minlength: 7,
-                maxlenght: 30,
-            },
-        },
-        mensajes : {
-            nombre: {
-                requerido: "El nivel de estudio es requerido",
-                minlength: "El nivel de estudio tener mínimo 7 caracteres",
-                maxlength: "El  nivel de estudio debe tener máximo 30 caracteres",
-            },
-        }
-    });
+//         reglas : {
+//             nivelEstudio : {
+//                 requerido: true,
+//                 minlength: 7,
+//                 maxlenght: 30,
+//             },
+//         },
+//         mensajes : {
+//             nivelEstudio: {
+//                 requerido: "El nivel de estudio es requerido",
+//                 minlength: "El nivel de estudio tener mínimo 7 caracteres",
+//                 maxlength: "El  nivel de estudio debe tener máximo 30 caracteres",
+//             },
+//         }
+//     });
 
- });
+//  });
 
 // $(). ready(función() {
 
-//     $(".FormModal"). on(enviar, función(e)){
+//     $("#form-registro"). on(enviar, función(e)){
 //         e.preventDefault(); 
 //     });
 

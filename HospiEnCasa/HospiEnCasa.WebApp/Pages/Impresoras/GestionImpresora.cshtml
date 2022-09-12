@@ -7,11 +7,10 @@
 
 <h1>@ViewData["Title"]</h1>
 
-
 <div class="row m-4" style="padding-top: 10px;">
     <div class="col-sm-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Registrar
-        </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Impresora</button>
+          <a class="btn btn-primary" asp-page="/Impresoras/Tipo_Impresora">ir a Tipo de impresoras</a>
     </div>
   
 </div>
@@ -24,105 +23,30 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Marca</th>
-                        <th>Tipo imp.</th>
+                        @* <th>Tipo imp.</th> *@
                         <th>Fecha mantenimiento</th>
-                        <th>PLACA</th>                                                              
+                        <th>Placa</th>                                                              
                         <th>Detalles</th>                        
                         <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var _impresoras in Model.listadoImpresora)
+                {
                     <tr>
-                        <td>1</td>
-                        <td>ricoh</td>
-                        <td>mp-4001</td>
-                        <td>Generica</td>
-                        <td>26/08/2022</td>       
-                        <td>800</td>                 
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum alias ea incidunt,
-                            deleniti iusto, illum perspiciatis omnis impedit ipsam quos non possimus, sed necessitatibus
-                            obcaecati eligendi dolore sint placeat esse</td>                       
-
+                        <td scope="row">@_impresoras.id</td>
+                        <td>@_impresoras.nombre</td>         
+                        <td>@_impresoras.marca</td>       
+                        @* <td>@_impresoras.tipo_Impresora</td>        *@
+                        <td>@_impresoras.fecha_mantenimiento</td>       
+                        <td>@_impresoras.detalles</td>                                                      
                         <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Más</a>                                                                       
-                                       
+                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                      
+                            <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
+                            class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>ricoh</td>
-                        <td>mp-4001</td>
-                        <td>Multifuncional</td>
-                        <td>26/08/2022</td>                     
-                        <td>800</td>                 
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum alias ea incidunt,
-                            deleniti iusto, illum perspiciatis omnis impedit ipsam quos non possimus, sed necessitatibus
-                            obcaecati eligendi dolore sint placeat esse</td>                       
-                         <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Más</a>                                                                   
-                          
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>ricoh</td>
-                        <td>mp-4001</td>
-                        <td>Fotocopiadora</td>
-                        <td>26/08/2022</td>
-                        <th>800</th>                      
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum alias ea incidunt,
-                            deleniti iusto, illum perspiciatis omnis impedit ipsam quos non possimus, sed necessitatibus
-                            obcaecati eligendi dolore sint placeat esse</td>                        
-                         <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Más</a>                                                                   
-                        
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>ricoh</td>
-                        <td>mp-4001</td>
-                        <td>Multifuncional</td>
-                        <td>26/08/2022</td>
-                        <td>800</td>                  
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum alias ea incidunt,
-                            deleniti iusto, illum perspiciatis omnis impedit ipsam quos non possimus, sed necessitatibus
-                            obcaecati eligendi dolore sint placeat esse</td>                       
-                         <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Más</a>                       
-                
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>ricoh</td>
-                        <td>mp-4001</td>
-                        <td>Multifuncional</td>
-                        <td>26/08/2022</td>
-                        <td>800</td>                   
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum alias ea incidunt,
-                            deleniti iusto, illum perspiciatis omnis impedit ipsam quos non possimus, sed necessitatibus
-                            obcaecati eligendi dolore sint placeat esse</td>                       
-                         <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Más</a>                          
-                                                             
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>ricoh</td>
-                        <td>mp-4001</td>
-                        <td>Multifuncional</td>
-                        <td>26/08/2022</td>                  
-                        <td>800</td>                   
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum alias ea incidunt,
-                            deleniti iusto, illum perspiciatis omnis impedit ipsam quos non possimus, sed necessitatibus
-                            obcaecati eligendi dolore sint placeat esse</td>                      
-                         <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Más</a>                          
-                                                 
-                        </td>
-                    </tr>
+                }                   
                 </tbody>
             </table>
     </div>
@@ -140,7 +64,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post">
                     <p class="text-primary">
                         Los campos con asterisco (<font color="red">*</font>) son obligatorios.
                     </p>
@@ -154,11 +78,13 @@
                             <input type="text" class="form-control" placeholder="Marca">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Tipo (<font color="red">*</font>)</label>
+                            <label>Tipo Impresora (<font color="red">*</font>)</label>
                             <select type="text" class="form-control">
-                                <option value="">Seleccionar..</option>
-                                <option value="">Si</option>
-                                <option value="">No</option>
+                                <option value="" selected="selected">Seleccionar..</option>
+                                 @foreach (var tipo in Model.listadoTipoImpresora)
+                                {
+                                    <option value="">@tipo.nombre_impresora</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -169,11 +95,11 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>Fecha de mantenimiento (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" type="date" id="start" name="trip-start" value="" min="1900-01-01" max="2040-12-31">
+                            <input type="date" class="form-control" type="date" id="start" name="trip-start" value="" min="1900-01-01" max="2040-12-31">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Año modelo</label>
-                            <input type="text" class="form-control" placeholder="Año Modelo">
+                            <input type="date" class="form-control" placeholder="Año Modelo">
                         </div>
                     </div>
                      <div class="form-row">
@@ -200,10 +126,10 @@
                             <textarea  type="text" class="form-control" placeholder="Otras caracteristicas "></textarea>
                         </div>
                     </div>
-                     <div class="modal-footer">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                 <button type="button" class="btn btn-success" >Guardar</button>
-            </div>
+                    <div class="modal-footer">
+                          <button type="reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-success" >Guardar</button>
+                   </div>
                 </form>
             </div>
            

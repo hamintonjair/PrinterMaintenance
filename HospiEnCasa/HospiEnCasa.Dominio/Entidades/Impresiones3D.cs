@@ -10,8 +10,8 @@ namespace HospiEnCasa.Dominio
        public int id { get; set; }
        public string cliente { get; set; }
        public string Tipo_impresion { get; set; }
-       public int cantidad { get; set; }
-       public decimal precio { get; set; }      
+       public string cantidad { get; set; }
+       public string precio { get; set; }      
 
     }
 }
