@@ -10,7 +10,7 @@ namespace HospiEnCasa.Dominio
         public int id { get; set; }
         public string tipo_repuesto { get; set; }
         public string valor { get; set; }
-        public DateTime fecha_compra { get; set; }
+        public string fecha_compra { get; set; }
        
     }
 }

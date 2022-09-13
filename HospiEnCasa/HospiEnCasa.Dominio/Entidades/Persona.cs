@@ -12,7 +12,7 @@ namespace HospiEnCasa.Dominio
        public string apellidos { get; set; }
        public string cedula { get; set; }
        public string telefono { get; set; }
-       public DateTime fecha_nacimiento { get; set; }
+       public string fecha_nacimiento { get; set; }
        public string direccion { get; set; }  
        public string email { get; set; }   
        public NivelEstudio nivelEstudio { get; set; }  

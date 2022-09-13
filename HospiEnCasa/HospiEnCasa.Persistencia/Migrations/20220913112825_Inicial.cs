@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HospiEnCasa.Persistencia.Migrations
 {
@@ -31,7 +30,7 @@ namespace HospiEnCasa.Persistencia.Migrations
                     valor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     tipo_repuesto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_compra = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    fecha_compra = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,8 +45,8 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     tipo_seguro = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     precio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_activacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    fecha_vencimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    fecha_activacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    fecha_vencimiento = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,7 +63,7 @@ namespace HospiEnCasa.Persistencia.Migrations
                     apellidos = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     cedula = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_nacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    fecha_nacimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     nivelEstudioid = table.Column<int>(type: "int", nullable: true),
@@ -114,11 +113,11 @@ namespace HospiEnCasa.Persistencia.Migrations
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     placa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ano_modelo = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ano_modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     velocidad_imp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     volumen_imp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     pais_origen = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_mantenimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    fecha_mantenimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     detalles = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     otros_caracteristicas = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     seguroid = table.Column<int>(type: "int", nullable: true),
@@ -127,7 +126,7 @@ namespace HospiEnCasa.Persistencia.Migrations
                     cantidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     precio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     valor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_revision = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    fecha_revision = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     personaid = table.Column<int>(type: "int", nullable: true),
                     compraid = table.Column<int>(type: "int", nullable: true),
                     estado = table.Column<int>(type: "int", nullable: true)

@@ -30,88 +30,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>luis angel</td>
-                    <td>Impresion 3D</td>
-                    <td>150</td>
-                    <td>15.000</td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>luis angel</td>
-                    <td>Impresion 3D</td>
-                    <td>150</td>
-                    <td>
-                        15.000
-                    </td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>luis angel</td>
-                    <td>Impresion 3D</td>
-                    <td>150</td>
-                    <td>
-                        15.000
-                    </td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>luis angel</td>
-                    <td>Impresion 3D</td>
-                    <td>150</td>
-                    <td>
-                        15.000
-                    </td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>luis angel</td>
-                    <td>Impresion 3D</td>
-                    <td>150</td>
-                    <td>
-                        15.000
-                    </td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>luis angel</td>
-                    <td>Impresion 3D</td>
-                    <td>150</td>
-                    <td>
-                        15.000
-                    </td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
+                try( 
+                    
+                 @foreach (var _impresion in Model.listadoImpresion3D)
+                    {
+                        <tr>
+                            <td scope="row">@_impresion.id</td>
+                            <td>@_impresion.cliente</td>         
+                            <td>@_impresion.Tipo_impresion</td>                       
+                            <td>@_impresion.cantidad</td>       
+                            <td>@_impresion.precio</td>                                                      
+                            <td>
+                                <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                      
+                                <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
+                                class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }                
+
+                )catch(Exception ex)
+                (
+
+                )
+                       
             </tbody>
         </table>
     </div>
@@ -129,33 +70,33 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post">
                     <p class="text-primary">
                         Los campos con asterisco (<font color="red">*</font>) son obligatorios.
                     </p>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Cliente (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Cliente">
+                            <input type="text" id="cliente" name="cliente"class="form-control" placeholder="Cliente" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Tipo de impresón(<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Tipo de impresón">
-                        </div>
+                            <input type="text"id="impresion3d" name="impresion3d" class="form-control" placeholder="Tipo de impresón" required="">
+                    </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Cantidad (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Cantidad">
+                            <input type="text"id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Precio(<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Precio">
+                            <input type="text"id="precio" name="precio" class="form-control" placeholder="Precio" required="">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-success">Guardar</button>
+                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </form>
             </div>

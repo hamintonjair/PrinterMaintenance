@@ -53,8 +53,8 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("fecha_nacimiento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("fecha_nacimiento")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("nivelEstudioid")
                         .HasColumnType("int");
@@ -138,11 +138,11 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("fecha_activacion")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("fecha_activacion")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("fecha_vencimiento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("fecha_vencimiento")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("precio")
                         .HasColumnType("nvarchar(max)");
@@ -180,8 +180,8 @@ namespace HospiEnCasa.Persistencia.Migrations
                 {
                     b.HasBaseType("HospiEnCasa.Dominio.Repuesto");
 
-                    b.Property<DateTime>("fecha_compra")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("fecha_compra")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("tipo_repuesto")
                         .HasColumnType("nvarchar(max)");
@@ -200,14 +200,14 @@ namespace HospiEnCasa.Persistencia.Migrations
                 {
                     b.HasBaseType("HospiEnCasa.Dominio.TipoImpresora");
 
-                    b.Property<DateTime>("ano_modelo")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ano_modelo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("detalles")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("fecha_mantenimiento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("fecha_mantenimiento")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("marca")
                         .HasColumnType("nvarchar(max)");
@@ -267,8 +267,8 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<int>("estado")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("fecha_revision")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("fecha_revision")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("personaid")
                         .HasColumnType("int");
