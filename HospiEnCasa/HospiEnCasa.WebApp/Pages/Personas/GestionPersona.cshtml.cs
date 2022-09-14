@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.ComponentModel.Design.Serialization;
 using System.Runtime.CompilerServices;
@@ -57,9 +58,10 @@ namespace HospiEnCasa.WebApp.Pages.Personas
              var _socio       = Request.Form["socio"];
              var nivel_Estudio = Request.Form["profesion"];
 
-            var validado = studio.FindByName(nivel_Estudio);
-            var id = 0;
-           
+            //validamos que no exista para poder regiostrarlo
+            var validado = studio.Buscar(Int32.Parse(nivel_Estudio));
+          
+            
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(identificacion)){
 
@@ -67,12 +69,11 @@ namespace HospiEnCasa.WebApp.Pages.Personas
           
            }else{
 
-                foreach (var Estudio in validado)
-                {
-                   id =  Estudio.id ;
-                }
-                              
-                        var N_persona = new Persona{
+                if (validado.id > 0)
+                {  
+                  var  id =  validado.id;               
+               
+                  var N_persona = new Persona{
                         nombre = nombre,
                         apellidos = apellido,
                         cedula = identificacion,             
@@ -80,19 +81,23 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                         fecha_nacimiento = fecha,
                         direccion = direccion,
                         email = email, 
-                        // nivelEstudio = nivel_Estudio,                                   
-                        socio =  (_socio == 1 ? Socio.Si : Socio.No),
+                      //  nivelEstudio = id,                                   
+                        socio =  (_socio == "1" ? Socio.Si : Socio.No),
                     
                     };
                       var result = persona.AdicionarPersona(N_persona);
 
                     if(result > 0){
-                        Console.WriteLine("Nivel de estudio creado" + id+  "," + nivel_Estudio);
+                        Console.WriteLine("Nivel de estudio creado " + id+  "," + nivel_Estudio);
                 
                     }else{
                     Console.WriteLine("No se pudo ingresar el registro");
                     }
-                } 
+                }else{
+                      Console.WriteLine("Ya existe un registro con esto céudla");
+                }
+                
+            }
               
         }
     }

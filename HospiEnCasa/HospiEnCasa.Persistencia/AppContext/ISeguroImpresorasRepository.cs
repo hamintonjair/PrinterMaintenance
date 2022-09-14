@@ -12,7 +12,7 @@ namespace HospiEnCasa.Persistencia
         SeguroImpresora Buscar(int id);
         IEnumerable<SeguroImpresora> GetAll();
         List<SeguroImpresora> ObtenerTodo();
-        // IEnumerable<SeguroImpresora> FindByName(string name);
+        IEnumerable<SeguroImpresora> FindByName(string name);
         // IEnumerable<SeguroImpresora> FindMultipleParameter(string value);
         int Update(SeguroImpresora seguroImpresora);
         int Delete(SeguroImpresora seguroImpresora);

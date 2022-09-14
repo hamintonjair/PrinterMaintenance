@@ -38,9 +38,9 @@ namespace HospiEnCasa.Persistencia
             return _context.SeguroImpresoras.ToList();
         }
         //buscar por nombre
-        // IEnumerable<SeguroImpresora> ISeguroImpresorasRepository.FindByName(string name){
-        //     return _context.SeguroImpresoras.Where(p => p.tipo_seguro.Contains(name));
-        // }
+        IEnumerable<SeguroImpresora> ISeguroImpresorasRepository.FindByName(string name){
+            return _context.SeguroImpresoras.Where(p => p.tipo_seguro.Contains(name));
+        }
 
         // IEnumerable<SeguroImpresora> ISeguroImpresorasRepository.FindMultipleParameter(string value){
         //     return _context.SeguroImpresoras.Where(p => p.tipo_seguro.Contains(value));

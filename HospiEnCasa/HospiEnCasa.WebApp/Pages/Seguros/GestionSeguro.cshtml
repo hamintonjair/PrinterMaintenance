@@ -20,79 +20,30 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tipo</th>
+                    <th>Tipo de seguro</th>
+                    <th>Precio</th>
                     <th>Fecha activación</th>
                     <th>Fecha vencimiento</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>seguro de mantenimiento</td>
-                    <td>17/08/2022</td>
-                    <td>15/2/2023</td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
+                 @foreach (var seguro in Model.listadoSeguro)
+                {
+                    <tr>
+                        <td scope="row">@seguro.id</td>
+                        <td>@seguro.tipo_seguro</td>
+                        <td>@seguro.precio</td>
+                        <td>@seguro.fecha_activacion</td>    
+                        <td>@seguro.fecha_vencimiento</td>
+                                             
+                        <td>
+                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                        
+                            <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
                             class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>seguro de mantenimiento</td>
-                    <td>17/08/2022</td>
-                    <td>15/2/2023</td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>seguro de mantenimiento</td>
-                    <td>17/08/2022</td>
-                    <td>15/2/2023</td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>seguro de mantenimiento</td>
-                    <td>17/08/2022</td>
-                    <td>15/2/2023</td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>seguro de mantenimiento</td>
-                    <td>17/08/2022</td>
-                    <td>15/2/2023</td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>seguro de mantenimiento</td>
-                    <td>17/08/2022</td>
-                    <td>15/2/2023</td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }           
             </tbody>
         </table>
     </div>
@@ -109,29 +60,36 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post">
                     <p class="text-primary">
                         Los campos con asterisco (<font color="red">*</font>) son obligatorios.
                     </p>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label>Tipo de seguro (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Tipo de seguro">
+                            <input name="tipoSeguro" id="tipoSeguro" type="text" class="form-control" placeholder="Tipo de seguro"  value=""
+                              minlength="4" maxlength="20" placeholder="Tipo seguro" required="">
+                        </div>
+                         <div class="form-group col-md-4">
+                            <label>Precio(<font color="red">*</font>)</label>
+                            <input type="number" class="form-control" id="precio" name="precio" value=""
+                                minlength="4" maxlength="10" placeholder="Precio seguro" required="">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Fecha de activación(<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" type="date" id="start" name="trip-start" value=""
+                            <input type="text" class="form-control"   id="fechaActivacion" name="fechaActivacion" value=""
                                min="10" max="10" placeholder="01-02-2017" required="">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Fecha de vencimiento(<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" type="date" id="start" name="trip-start" value=""
+                            <input type="text" class="form-control" id="fechaVencimiento" name="fechaVencimiento" value=""
                                 min="10" max="10" placeholder="01-02-2017" required="">
                         </div>
+                       
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-success">Guardar</button>
+                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </form>
             </div>

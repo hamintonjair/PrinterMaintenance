@@ -1,3 +1,5 @@
+
+using System.Xml.Schema;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +37,40 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
         public void OnPost()
         {
+            var _rol = Request.Form["rol"];
+            var password = Request.Form["password"];
+            var persona = Request.Form["persona"];
+  
+            //validamos que no exista para poder regiostrarlo
+            var validado = rol.FindByName(_rol);
+         
+            //VALIDAMOS SI EL DATO INGRESADO ES VACIO
+           if(String.IsNullOrEmpty(_rol) || String.IsNullOrEmpty(password)){
+
+                  Console.WriteLine("Error, debes llenar todos los campos");
           
+           }else{
+
+                if (validado != null)
+                {                    
+                    var N_rol = new Rol{
+                        tipo_Rol = _rol,
+                        password = password,
+                      //  persona = persona,
+                    };
+                    var result = rol.AdicionarRol(N_rol);
+
+                    if(result > 0){
+                        Console.WriteLine("Rol creado");                      
+                        // Response.Redirect("page");  
+                    }else{
+                    Console.WriteLine("No se pudo ingresar el registro");
+                    }
+                }else
+                {
+                  Console.WriteLine("No se puede duplicar el rol");
+                }
+           }
            
         }
     }
