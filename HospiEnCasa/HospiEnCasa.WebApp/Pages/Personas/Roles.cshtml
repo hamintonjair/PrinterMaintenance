@@ -1,5 +1,5 @@
 @page
-@model HospiEnCasa.WebApp.Pages.Personas.Rol
+@model HospiEnCasa.WebApp.Pages.Personas.Roles
 @{
     ViewData["Title"] = "Listado de Roles";
 }
@@ -23,22 +23,28 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nivel de estudios</th>                    
+                    <th>Rol</th>   
+                    <th>Password</th>     
+                    <th>Persona</th>                
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Haminton</td>                              
-                    <td>
-                        <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>
-                    </td>
-                    <td>
-                        <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
+             @foreach (var rol in Model.listado_Rol)
+                {
+                    <tr>
+                        <td scope="row">@rol.id</td>
+                        <td>@rol.tipo_Rol</td>
+                        <td>@rol.password</td>
+                        <td>@rol.persona</td>
+                                         
+                        <td>
+                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                        
+                            <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
                             class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
@@ -63,10 +69,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label>Usuario (<font color="red">*</font>)</label>
-                            <select type="Persona" class="form-control" required="">
-                                <option value="">Seleccionar..</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
+                            <select name="persona" type="Persona" class="form-control" required="">
+                                <option value="" selected="selected" >Seleccionar..</option>
+                                 @foreach (var persona in Model.listadoPersona)
+                                {
+                                    <option value="@persona.id">@persona.nombre</option>
+                                }
                             </select>
                         </div>
                     </div>

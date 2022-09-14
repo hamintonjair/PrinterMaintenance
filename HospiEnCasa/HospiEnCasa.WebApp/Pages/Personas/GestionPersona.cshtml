@@ -12,7 +12,7 @@
     <div class="col-sm-12">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Funcionario</button>
         <a class="btn btn-primary" asp-page="/Personas/NivelStudio">ir a Profesión</a>
-        <a class="btn btn-primary" asp-page="/Personas/Rol">ir a Rol</a>
+        <a class="btn btn-primary" asp-page="/Personas/Roles">ir a Rol</a>
     </div>
 </div>
 
@@ -47,8 +47,7 @@
                         <td>@persona.telefono</td>
                         <td>@persona.direccion</td>
                         <td>@persona.email</td>
-                        <td>@persona.socio</td>
-                        @* <td>@persona.rol</td>  *@
+                        <td>@persona.socio</td>                       
                         <td>
                             <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                        
                             <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
@@ -56,8 +55,6 @@
                         </td>
                     </tr>
                 }
-
-
             </tbody>
         </table>
     </div>
@@ -105,8 +102,8 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" type="date" id="fecha" name="fecha" value=""
-                                min="1900-01-01" max="2040-12-31" placeholder="Fecha de Nacimiento">
+                            <input type="text" class="form-control" type="date" id="fecha" name="fecha" value=""
+                                min="10" max="10" placeholder="01-02-2017">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Dirección </label>
@@ -126,7 +123,7 @@
                                 <option value="" selected="selected">Seleccionar..</option>
                                 @foreach (var estudio in Model.listadoNivelEstudio)
                                 {
-                                    <option value="">@estudio.estudio</option>
+                                    <option value="@estudio.id">@estudio.estudio</option>
                                 }
 
                             </select>
