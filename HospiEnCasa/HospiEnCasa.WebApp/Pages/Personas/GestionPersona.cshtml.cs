@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.ComponentModel.Design.Serialization;
@@ -66,7 +67,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
            if(String.IsNullOrEmpty(identificacion)){
 
                   Console.WriteLine("Error, debes llenar todos los campos");
-          
+                  OnGet();    
            }else{
 
                 if (validado.id > 0)
@@ -81,7 +82,8 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                         fecha_nacimiento = fecha,
                         direccion = direccion,
                         email = email, 
-                      //  nivelEstudio = id,                                   
+                       //  nivelEstudio = id,   
+                      // fecha = new Datetime();                                
                         socio =  (_socio == "1" ? Socio.Si : Socio.No),
                     
                     };
@@ -89,6 +91,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
                     if(result > 0){
                         Console.WriteLine("Nivel de estudio creado " + id+  "," + nivel_Estudio);
+                        OnGet();    
                 
                     }else{
                     Console.WriteLine("No se pudo ingresar el registro");

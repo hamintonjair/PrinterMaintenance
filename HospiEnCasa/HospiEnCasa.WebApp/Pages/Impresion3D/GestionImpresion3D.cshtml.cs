@@ -40,7 +40,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
            if(String.IsNullOrEmpty(cliente) || String.IsNullOrEmpty(Tipo_impresion) || String.IsNullOrEmpty(cantidad) || String.IsNullOrEmpty(precio)){
 
                   Console.WriteLine("Error, debes llenar todos los campos");
-          
+                  OnGet();    
            }else{
           
                 var N_Imppresion3D = new Impresiones3D{
@@ -52,7 +52,8 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             var result = impresion.AdicionarImpresiones3D(N_Imppresion3D);
 
             if(result > 0){
-                Console.WriteLine("Impresion creada");                      
+                Console.WriteLine("Impresion creada");  
+                OnGet();                       
                 // Response.Redirect("page");  
                 //  RedirectToPage("./Page");               
             }else{

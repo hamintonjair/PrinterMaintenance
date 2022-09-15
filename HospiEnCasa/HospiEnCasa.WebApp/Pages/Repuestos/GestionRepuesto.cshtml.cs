@@ -37,6 +37,7 @@ namespace HospiEnCasa.WebApp.Pages.Repuestos
            if(String.IsNullOrEmpty(repuesto) || String.IsNullOrEmpty(precio)){
 
                   Console.WriteLine("Error, debes llenar todos los campos");
+                  OnGet();    
           
            }else{
           
@@ -52,8 +53,9 @@ namespace HospiEnCasa.WebApp.Pages.Repuestos
                     var result = repuestos.AdicionarRepuesto(N_repuesto);
 
                     if(result > 0){
-                        Console.WriteLine("Repuesto Agrregado");                      
-                        Response.Redirect("page");  
+                        Console.WriteLine("Repuesto Agrregado");
+                        OnGet();                          
+                       // Response.Redirect("/Impresoras/GestionImpresora");  
                     }else{
                     Console.WriteLine("No se pudo ingresar el registro");
                     }

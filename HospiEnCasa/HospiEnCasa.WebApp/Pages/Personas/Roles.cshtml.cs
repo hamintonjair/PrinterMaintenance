@@ -48,7 +48,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
            if(String.IsNullOrEmpty(_rol) || String.IsNullOrEmpty(password)){
 
                   Console.WriteLine("Error, debes llenar todos los campos");
-          
+                  OnGet();    
            }else{
 
                 if (validado != null)
@@ -61,7 +61,8 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                     var result = rol.AdicionarRol(N_rol);
 
                     if(result > 0){
-                        Console.WriteLine("Rol creado");                      
+                        Console.WriteLine("Rol creado");
+                        OnGet();                 
                         // Response.Redirect("page");  
                     }else{
                     Console.WriteLine("No se pudo ingresar el registro");

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HospiEnCasa.Dominio
 {
-    public class Impresora : TipoImpresora
+    public class Impresora
     {
        public int id { get; set; }
        public string nombre { get; set; }
@@ -17,8 +17,8 @@ namespace HospiEnCasa.Dominio
        public string pais_origen { get; set; }
        public string fecha_mantenimiento { get; set; }
        public string detalles { get; set; }
-       public string otros_caracteristicas { get; set; }    
-       public SeguroImpresora seguro { get; set; }
+       public string otros_caracteristicas { get; set; }  
+       public TipoImpresora tipoImpresora { get; set; }    
      
     }
 }

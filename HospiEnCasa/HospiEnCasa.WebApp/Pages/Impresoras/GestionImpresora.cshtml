@@ -23,7 +23,7 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Marca</th>
-                        @* <th>Tipo imp.</th> *@
+                         <th>Tipo imp.</th>
                         <th>Fecha mantenimiento</th>
                         <th>Placa</th>                                                              
                         <th>Detalles</th>                        
@@ -37,8 +37,9 @@
                         <td scope="row">@_impresoras.id</td>
                         <td>@_impresoras.nombre</td>         
                         <td>@_impresoras.marca</td>       
-                        @* <td>@_impresoras.tipo_Impresora</td>        *@
-                        <td>@_impresoras.fecha_mantenimiento</td>       
+                        <td>@_impresoras.tipoImpresora</td>       
+                        <td>@_impresoras.fecha_mantenimiento</td>  
+                        <td>@_impresoras.placa</td>     
                         <td>@_impresoras.detalles</td>                                                      
                         <td>
                             <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                      
@@ -70,20 +71,20 @@
                     </p>
                   <div class="form-row" style="padding-top:14px;">
                         <div class="form-group col-md-4">
-                            <label>Impresora (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Nombre Impresora">
+                            <label>Nombre Impresora (<font color="red">*</font>)</label>
+                            <input type="text" id="impresora" name="impresora" class="form-control" placeholder="Nombre Impresora">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Marca (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Marca">
+                            <input type="text"id="marca" name="marca" class="form-control" placeholder="Marca">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Tipo Impresora (<font color="red">*</font>)</label>
-                            <select type="text" class="form-control">
+                            <select  name="tipoImpresora" type="text" class="form-control" required="">
                                 <option value="" selected="selected">Seleccionar..</option>
                                  @foreach (var tipo in Model.listadoTipoImpresora)
                                 {
-                                    <option value="">@tipo.nombre_impresora</option>
+                                    <option value="@tipo.id">@tipo.nombre_impresora</option>
                                 }
                             </select>
                         </div>
@@ -91,39 +92,39 @@
                      <div class="form-row">
                         <div class="form-group col-md-4">
                             <label>Placa (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" placeholder="Placa">
+                            <input type="text" id="placa" name="placa" class="form-control" placeholder="Placa">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Fecha de mantenimiento (<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" type="date" id="start" name="trip-start" value=""   min="10" max="10" placeholder="01-02-2017" required="">
+                            <input type="date" class="form-control" id="fechaMantenimiento" name="fechaMantenimiento"  min="10" max="10" placeholder="01-02-2017" required="">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Año modelo</label>
-                            <input type="text" class="form-control" placeholder="Año Modelo"   min="10" max="10" placeholder="01-02-2017">
+                            <input type="date" id="fechaModelo" name="fechaModelo" class="form-control"  min="10" max="10" placeholder="01-02-2017">
                         </div>
                     </div>
                      <div class="form-row">
                         <div class="form-group col-md-4">
                             <label>Velocidad Impresión</label>
-                            <input type="text" class="form-control" placeholder="velocidad Impresión">
+                            <input type="text" id="velocidadImp" name="velocidadImp" class="form-control" placeholder="velocidad Impresión">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Volumen Impresión </label>
-                            <input type="text" class="form-control" placeholder="volumen Impresión">
+                            <input type="text" id="volumenImp" name="volumenImp" class="form-control" placeholder="volumen Impresión">
                         </div>
                         <div class="form-group col-md-4">
                             <label>País</label>
-                            <input type="text" class="form-control" placeholder="pas">
+                            <input type="text" id="pais" name="pais" class="form-control" placeholder="pas">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-8">
                             <label>Detalles (<font color="red">*</font>)</label>
-                            <textarea  type="text" class="form-control" placeholder="detalles"></textarea>
+                            <textarea  type="text" id="detalles" name="detalles" class="form-control" placeholder="detalles"></textarea>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Otras caracteristicas </label>
-                            <textarea  type="text" class="form-control" placeholder="Otras caracteristicas "></textarea>
+                            <textarea  type="text" id="otrasCaract" name="otrasCaract" class="form-control" placeholder="Otras caracteristicas "></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

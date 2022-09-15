@@ -37,7 +37,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
            if(String.IsNullOrEmpty(nivelStudio)){
 
                   Console.WriteLine("Error, debes llenar todos los campos");
-          
+                  OnGet();    
            }else{
           
                var N_estudio = new NivelEstudio{
@@ -46,7 +46,8 @@ namespace HospiEnCasa.WebApp.Pages.Personas
             var result = studio.AdicionarNivelEstudio(N_estudio);
 
             if(result > 0){
-                Console.WriteLine("Nivel de estudio creado");                      
+                Console.WriteLine("Nivel de estudio creado");
+                OnGet();                   
                 // Response.Redirect("page");  
             }else{
                Console.WriteLine("No se pudo ingresar el registro");

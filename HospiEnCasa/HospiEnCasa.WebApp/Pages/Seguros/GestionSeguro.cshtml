@@ -22,6 +22,7 @@
                     <th>#</th>
                     <th>Tipo de seguro</th>
                     <th>Precio</th>
+                    <th>Impresora</th>
                     <th>Fecha activación</th>
                     <th>Fecha vencimiento</th>
                     <th>Acciones</th>
@@ -34,6 +35,7 @@
                         <td scope="row">@seguro.id</td>
                         <td>@seguro.tipo_seguro</td>
                         <td>@seguro.precio</td>
+                        <td>@seguro.impresora</td>
                         <td>@seguro.fecha_activacion</td>    
                         <td>@seguro.fecha_vencimiento</td>
                                              
@@ -77,13 +79,23 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>Fecha de activación(<font color="red">*</font>)</label>
-                            <input type="text" class="form-control"   id="fechaActivacion" name="fechaActivacion" value=""
+                            <input type="date" class="form-control"   id="fechaActivacion" name="fechaActivacion" value=""
                                min="10" max="10" placeholder="01-02-2017" required="">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Fecha de vencimiento(<font color="red">*</font>)</label>
-                            <input type="text" class="form-control" id="fechaVencimiento" name="fechaVencimiento" value=""
+                            <input type="date" class="form-control" id="fechaVencimiento" name="fechaVencimiento" value=""
                                 min="10" max="10" placeholder="01-02-2017" required="">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Impresora (<font color="red">*</font>)</label>
+                            <select name="impresora" type="imprasora" class="form-control" required="">
+                                <option value="" selected="selected" >Seleccionar..</option>
+                                 @foreach (var impresora in Model.listadoImpresora)
+                                {
+                                    <option value="@impresora.id">@impresora.nombre</option>
+                                }
+                            </select>
                         </div>
                        
                     </div>

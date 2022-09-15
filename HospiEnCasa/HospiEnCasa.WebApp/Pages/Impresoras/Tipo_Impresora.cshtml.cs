@@ -36,7 +36,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
            if(String.IsNullOrEmpty(tipoImpresora)){
 
                   Console.WriteLine("Error, debes llenar todos los campos");
-          
+                  OnGet();    
            }else{
           
                var N_tipoImpresora = new TipoImpresora{
@@ -50,7 +50,8 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
               var result = tipo_Impresora.AdicionarTipoImpresora(N_tipoImpresora);
 
                 if(result > 0){
-                    Console.WriteLine("Tipo impresora creado");                      
+                    Console.WriteLine("Tipo impresora creado");  
+                    OnGet();                        
                     // Response.Redirect("page");  
                 }else{
                 Console.WriteLine("No se pudo ingresar el registro");
