@@ -17,8 +17,9 @@ namespace HospiEnCasa.Dominio
        public string pais_origen { get; set; }
        public string fecha_mantenimiento { get; set; }
        public string detalles { get; set; }
-       public string otros_caracteristicas { get; set; }  
+       public string otros_caracteristicas { get; set; } 
+           //agregación   
        public TipoImpresora tipoImpresora { get; set; }    
-     
+
     }
 }

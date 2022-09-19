@@ -1,3 +1,76 @@
+
+var datatable;
+
+$(document).ready(function(){
+    loadDataTable();
+ 
+})
+// function loadDataTable(){
+//     datatable = $('#customerDatatable').DataTable({       
+//     });
+// }
+
+//  $(document).on('click','.btnEdit', function (e){
+//      e.preventDefault();
+//      //el padre de la columna y de la fila parent
+//      var id = $(this).attr("rl");  
+
+//      if(id == "")
+//      {
+//        alert("Id rol required")
+//      }
+//      else
+//      {
+//          $.ajax({
+//           url:  "/Impresion3D/GestionImpresion3D?handler=Update" +id,
+//           contentType: "application/json; charset=utf-8",
+//           dataType: "html",
+//           headers: {
+//             "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+//         },
+//          data: JSON.stringify(impresion3d),
+//             })
+//             .done(function (result) {
+//                 alert(result);
+//                 console.log(result);
+//                 location.reload();
+//             })
+//             .fail(function (error) {
+//                 console.log(result);
+//                 alert(error);
+//             });
+     
+//        }
+ 
+//     //  $(this).parent().parent().find('td').each(function(index){
+//     //     switch(index){
+//     //         case 0:
+//     //             $('#id').val($(this).text());
+
+      
+//     //             break;
+//     //         case 1:
+//     //             $('#cliente').val($(this).text());
+//     //             break;
+//     //         case 2:
+//     //             $('#impresion3d').val($(this).text());
+//     //             break;
+//     //         case 3:
+//     //             $('#cantidad').val($(this).text());
+//     //             break;
+//     //         case 4:
+//     //             $('#precio').val($(this).text());
+//     //             break;
+           
+//     //     }
+
+//     //  }),
+
+//      $('#FormModalEditar'). modal('show');
+//  });
+
+// $(document).on('fnActualizar')
+
 // $(document).on('FormModal1', function (e){
 //     e.preventDefaul();
 

@@ -1,6 +1,7 @@
 using System;
 using HospiEnCasa.Dominio;
 using System.Linq;
+using Microsoft.EntityFrameworkCore; //para pode uar el include
 using System.Collections.Generic;
 
 namespace HospiEnCasa.Persistencia
@@ -34,9 +35,9 @@ namespace HospiEnCasa.Persistencia
         IEnumerable<Persona> IPersonaRepository.GetAll(){
             return _context.Personas;
         }
-        //listar
+        //listar -- se include nivel de estudio para poder relacionar el id
         List<Persona> IPersonaRepository.ObtenerTodo(){
-            return _context.Personas.ToList();
+            return _context.Personas.Include(p => p.nivelEstudio).ToList();
         }
         //buscar por nombre
         IEnumerable<Persona> IPersonaRepository.FindByName(string name){

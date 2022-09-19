@@ -33,45 +33,53 @@ namespace HospiEnCasa.WebApp.Pages.Seguros
         }
          public void OnPost()
         {
-            var tipoSeguro = Request.Form["tipoSeguro"];
-            var precio = Request.Form["precio"];
-            var fechaActivacion = Request.Form["fechaActivacion"];
+            var mensaje = "";  
+            var tipoSeguro       = Request.Form["tipoSeguro"];
+            var precio           = Request.Form["precio"];
+            var fechaActivacion  = Request.Form["fechaActivacion"];
             var fechaVencimiento =Request.Form["fechaVencimiento"];
+            var impresora =Request.Form["impresora"];
             
            
               Console.WriteLine("No" +tipoSeguro + " , " +precio+ " , " + fechaActivacion, fechaVencimiento); 
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
-           if(String.IsNullOrEmpty(tipoSeguro) || String.IsNullOrEmpty(fechaActivacion) || String.IsNullOrEmpty(fechaVencimiento) || String.IsNullOrEmpty(precio)){
+           if(String.IsNullOrEmpty(tipoSeguro) || String.IsNullOrEmpty(fechaActivacion) || String.IsNullOrEmpty(fechaVencimiento) 
+           || String.IsNullOrEmpty(precio)){
 
-                  Console.WriteLine("Error, debes llenar todos los campos");
-                  OnGet();    
-          
+                  mensaje = "Error, debes llenar todos los campos";
+                      
            }else{
           
                var N_seguros = new SeguroImpresora{
-                tipo_seguro = tipoSeguro,
-                precio =  precio,
-                 fecha_activacion = fechaActivacion,
-                 fecha_vencimiento = fechaVencimiento,
+
+                    tipo_seguro = tipoSeguro,
+                    precio =  precio,
+                    fecha_activacion = fechaActivacion,
+                    fecha_vencimiento = fechaVencimiento,
                 };
 
+                //validamos que no exista para poder regiostrarlo
+                var _validado = _impresora.Buscar(Int32.Parse(impresora));
                 var validado = seguro.FindByName(tipoSeguro);
 
                 if(validado != null){
-                    var result = seguro.AdicionarSeguroImpresora(N_seguros);
 
+                     seguro.AdicionarSeguroImpresora(N_seguros);
+
+                     N_seguros.impresora = _validado;
+                    var result = seguro.Update(N_seguros);
                     if(result > 0){
-                        Console.WriteLine("Seguro Agrregado"); 
+                        mensaje = "Seguro Agrregado con exito"; 
                         OnGet();                        
                         // Response.Redirect("page");  
                     }else{
-                    Console.WriteLine("No se pudo ingresar el registro");
+                      mensaje= "No se pudo ingresar el registro";
                     }
                 }else{
-                     Console.WriteLine("Ya heciste un seguro con esté Nombre");
+                    mensaje = "Ya heciste un seguro con esté Nombre";
                 }
             }
-               
+           TempData["mensaje"] = mensaje;
         }
     }
 }

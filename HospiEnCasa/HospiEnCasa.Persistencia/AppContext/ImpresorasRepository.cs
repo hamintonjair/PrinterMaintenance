@@ -1,6 +1,7 @@
 using System;
 using HospiEnCasa.Dominio;
 using System.Linq;
+using Microsoft.EntityFrameworkCore; //para pode uar el include
 using System.Collections.Generic;
 
 namespace HospiEnCasa.Persistencia
@@ -35,7 +36,8 @@ namespace HospiEnCasa.Persistencia
         }
         //listar
         List<Impresora> IImpresorasRepository.ObtenerTodo(){
-            return _context.Impresoras.ToList();
+            _context.Impresoras.Include(p => p.tipoImpresora).ToList();
+            return _context.Impresoras.ToList(); 
         }
         //buscar por nombre
         IEnumerable<Impresora> IImpresorasRepository.FindByName(string name){

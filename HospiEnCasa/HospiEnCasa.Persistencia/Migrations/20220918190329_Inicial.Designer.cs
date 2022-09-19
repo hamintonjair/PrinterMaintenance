@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospiEnCasa.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220915055911_Inicial")]
+    [Migration("20220918190329_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,37 +20,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
-
-            modelBuilder.Entity("HospiEnCasa.Dominio.CompraRepuesto", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("fecha_compra")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("impresoraid")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("repuestoid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("tipo_repuesto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("valor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("impresoraid");
-
-                    b.HasIndex("repuestoid");
-
-                    b.ToTable("CompraRepuestos");
-                });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresiones3D", b =>
                 {
@@ -126,6 +95,64 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.HasIndex("tipoImpresoraid");
 
                     b.ToTable("Impresoras");
+                });
+
+            modelBuilder.Entity("HospiEnCasa.Dominio.Login", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("rolid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("rolid");
+
+                    b.ToTable("Loggin");
+                });
+
+            modelBuilder.Entity("HospiEnCasa.Dominio.Modulo", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("finalizado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("impresion3d")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("impresora")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("repuestos")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("revision")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("rolid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("seguro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("usuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("rolid");
+
+                    b.ToTable("Modulos");
                 });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.NivelEstudio", b =>
@@ -212,9 +239,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("compraid")
-                        .HasColumnType("int");
-
                     b.Property<string>("detalles")
                         .HasColumnType("nvarchar(max)");
 
@@ -230,16 +254,22 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<int?>("personaid")
                         .HasColumnType("int");
 
+                    b.Property<int?>("repuestoid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("revision")
+                        .HasColumnType("int");
+
                     b.Property<string>("valor")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.HasIndex("compraid");
-
                     b.HasIndex("impresoraid");
 
                     b.HasIndex("personaid");
+
+                    b.HasIndex("repuestoid");
 
                     b.ToTable("Revisiones");
                 });
@@ -250,10 +280,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
@@ -269,8 +295,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.HasIndex("personaid");
 
                     b.ToTable("Roles");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Rol");
                 });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.SeguroImpresora", b =>
@@ -317,28 +341,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.ToTable("TipoImpresoras");
                 });
 
-            modelBuilder.Entity("HospiEnCasa.Dominio.Login", b =>
-                {
-                    b.HasBaseType("HospiEnCasa.Dominio.Rol");
-
-                    b.HasDiscriminator().HasValue("Login");
-                });
-
-            modelBuilder.Entity("HospiEnCasa.Dominio.CompraRepuesto", b =>
-                {
-                    b.HasOne("HospiEnCasa.Dominio.Impresora", "impresora")
-                        .WithMany()
-                        .HasForeignKey("impresoraid");
-
-                    b.HasOne("HospiEnCasa.Dominio.Repuesto", "repuesto")
-                        .WithMany()
-                        .HasForeignKey("repuestoid");
-
-                    b.Navigation("impresora");
-
-                    b.Navigation("repuesto");
-                });
-
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresiones3D", b =>
                 {
                     b.HasOne("HospiEnCasa.Dominio.Impresora", "impresora")
@@ -357,6 +359,24 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Navigation("tipoImpresora");
                 });
 
+            modelBuilder.Entity("HospiEnCasa.Dominio.Login", b =>
+                {
+                    b.HasOne("HospiEnCasa.Dominio.Rol", "rol")
+                        .WithMany()
+                        .HasForeignKey("rolid");
+
+                    b.Navigation("rol");
+                });
+
+            modelBuilder.Entity("HospiEnCasa.Dominio.Modulo", b =>
+                {
+                    b.HasOne("HospiEnCasa.Dominio.Rol", "rol")
+                        .WithMany()
+                        .HasForeignKey("rolid");
+
+                    b.Navigation("rol");
+                });
+
             modelBuilder.Entity("HospiEnCasa.Dominio.Persona", b =>
                 {
                     b.HasOne("HospiEnCasa.Dominio.NivelEstudio", "nivelEstudio")
@@ -368,10 +388,6 @@ namespace HospiEnCasa.Persistencia.Migrations
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Revision", b =>
                 {
-                    b.HasOne("HospiEnCasa.Dominio.CompraRepuesto", "compra")
-                        .WithMany()
-                        .HasForeignKey("compraid");
-
                     b.HasOne("HospiEnCasa.Dominio.Impresora", "impresora")
                         .WithMany()
                         .HasForeignKey("impresoraid");
@@ -380,11 +396,15 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .WithMany()
                         .HasForeignKey("personaid");
 
-                    b.Navigation("compra");
+                    b.HasOne("HospiEnCasa.Dominio.Repuesto", "repuesto")
+                        .WithMany()
+                        .HasForeignKey("repuestoid");
 
                     b.Navigation("impresora");
 
                     b.Navigation("persona");
+
+                    b.Navigation("repuesto");
                 });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Rol", b =>

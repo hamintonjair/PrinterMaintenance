@@ -11,15 +11,13 @@ namespace HospiEnCasa.Dominio
        public int id { get; set; }
        public string valor { get; set; }
        public string detalles { get; set; }
-       public string fecha_revision { get; set; }   
+       public string fecha_revision { get; set; }     
         //agregación     
        public Persona persona { get; set; }
        public Impresora impresora { get; set; }
-       public CompraRepuesto compra { get; set; }
+       public Repuesto repuesto { get; set; }
+       public TipoRevision revision { get; set; }
        public Estado estado { get; set; }
-      
-
-    
     }
     
 }

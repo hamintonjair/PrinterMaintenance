@@ -1,16 +1,26 @@
 @page
 @model HospiEnCasa.WebApp.Pages.Impresion3D.GestionImpresion3D
 @{
-    ViewData["Title"] = "Gestionar Impresiones 3D";
+    ViewData["Title"] = "Registro de Impresiones 3D";
 }
 
 <h1>@ViewData["Title"]</h1>
 
 
+@if (TempData["mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["mensaje"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 
 <div class="row m-4" style="padding-top: 10px;">
     <div class="col-sm-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Impresiones 3D
+        <button style="width: auto;" type="button" class="btn btn-primary" data-toggle="modal"
+            data-target="#FormModal">Impresiones 3D
         </button>
     </div>
 
@@ -29,31 +39,31 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            
-            <tbody>             
-                
-                 @foreach (var _impresion in Model.listadoImpresion3D)
-                    {
-                        <tr>
-                            <td scope="row">@_impresion.id</td>
-                            <td>@_impresion.cliente</td>         
-                            <td>@_impresion.Tipo_impresion</td>                       
-                            <td>@_impresion.cantidad</td>       
-                            <td>@_impresion.precio</td>                                                      
-                            <td>
-                                <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                      
-                                <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                                class="btn btn-danger">Eliminar</a>
-                            </td>
-                        </tr>
-                    }                
-                  
+
+            <tbody>
+
+                @foreach (var _impresion in Model.listadoImpresion3D)
+                {
+                    <tr>
+                        <td scope="row">@_impresion.id</td>
+                        <td>@_impresion.cliente</td>
+                        <td>@_impresion.Tipo_impresion</td>
+                        <td>@_impresion.cantidad</td>
+                        <td>@_impresion.precio</td>
+                        <td>
+                            <a  asp-page="./Edit" title="Editar" asp-route-id="@_impresion.id"
+                            class="btn btn-info "><i class="fa-sharp fa-solid fa-pen-to-square"></i>Editar</a>
+                            <a  asp-page="Delete" title="Eliminar" asp-route-id="@_impresion.id"
+                            class="btn btn-danger"><i class="fa-regular fa-trash-can"></i>Eliminar</a>
+                           
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
-
-
+@* insertar *@
 <div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -72,21 +82,25 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Cliente (<font color="red">*</font>)</label>
-                            <input type="text" id="cliente" name="cliente"class="form-control" placeholder="Cliente" required="">
+                            <input type="text" id="cliente" name="cliente" class="form-control" placeholder="Cliente"
+                                required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Tipo de impresón(<font color="red">*</font>)</label>
-                            <input type="text"id="impresion3d" name="impresion3d" class="form-control" placeholder="Tipo de impresón" required="">
-                    </div>
+                            <input type="text" id="impresion3d" name="impresion3d" class="form-control"
+                                placeholder="Tipo de impresón" required="">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Cantidad (<font color="red">*</font>)</label>
-                            <input type="text"id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad" required="">
+                            <input type="text" id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad"
+                                required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Precio(<font color="red">*</font>)</label>
-                            <input type="text"id="precio" name="precio" class="form-control" placeholder="Precio" required="">
+                            <input type="text" id="precio" name="precio" class="form-control" placeholder="Precio"
+                                required="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -95,7 +109,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

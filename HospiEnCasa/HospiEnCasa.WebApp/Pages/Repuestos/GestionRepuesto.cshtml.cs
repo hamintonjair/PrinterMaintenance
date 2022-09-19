@@ -29,19 +29,20 @@ namespace HospiEnCasa.WebApp.Pages.Repuestos
         }
          public void OnPost()
         {
+            var mensaje = ""; 
+              
             var repuesto = Request.Form["repuesto"];
-            var precio = Request.Form["precio"];
+            var precio   = Request.Form["precio"];
             var cantidad =Request.Form["cantidad"];
 
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
-           if(String.IsNullOrEmpty(repuesto) || String.IsNullOrEmpty(precio)){
+           if(String.IsNullOrEmpty(repuesto) || String.IsNullOrEmpty(precio)|| String.IsNullOrEmpty(cantidad)){
 
-                  Console.WriteLine("Error, debes llenar todos los campos");
-                  OnGet();    
-          
+                   mensaje = "Error, debes llenar todos los campos";
+                            
            }else{
           
-               var N_repuesto = new Repuesto{
+                var N_repuesto = new Repuesto{
                 n_Repuesto = repuesto,
                 cantidad = cantidad,
                 valor =  precio
@@ -50,20 +51,21 @@ namespace HospiEnCasa.WebApp.Pages.Repuestos
                 var validado = repuestos.FindByName(repuesto);
 
                 if(validado != null){
-                    var result = repuestos.AdicionarRepuesto(N_repuesto);
 
+                     var  result = repuestos.AdicionarRepuesto(N_repuesto);
+       
                     if(result > 0){
-                        Console.WriteLine("Repuesto Agrregado");
+                         mensaje = "Repuesto Agrregado con exito";
                         OnGet();                          
                        // Response.Redirect("/Impresoras/GestionImpresora");  
                     }else{
-                    Console.WriteLine("No se pudo ingresar el registro");
+                       mensaje = "No se pudo agregar el registro";
                     }
                 }else{
-                     Console.WriteLine("Ya heciste un repuesto con esté Nombre");
+                      mensaje = "Ya heciste un repuesto con esté Nombre";
                 }
             }
-           
+          TempData["mensaje"] = mensaje;
            
         }
     }

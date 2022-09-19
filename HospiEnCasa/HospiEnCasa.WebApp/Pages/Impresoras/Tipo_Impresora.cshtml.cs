@@ -30,38 +30,49 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
 
         public void OnPost()
         {
-            var tipoImpresora = Request.Form["tipoImpresora"];
+            var mensaje = "";  
+            var _tipoImp = "";  
+            var tipoImpresora = Request.Form["tipoImpresora"];           
+          
+            //recorremos el listado para sacar el datos que se necesita para comparar
+            OnGet();
+            foreach (var p in listadoTipoImpresora)
+            {
+                 _tipoImp = p.nombre_impresora;
+            }
+
+            if(_tipoImp == tipoImpresora){
+                mensaje = "Ya heciste un tipo de impresora con este nombre " + tipoImpresora ;           
+            }
 
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(tipoImpresora)){
 
-                  Console.WriteLine("Error, debes llenar todos los campos");
-                  OnGet();    
-           }else{
-          
-               var N_tipoImpresora = new TipoImpresora{
-                 nombre_impresora = tipoImpresora
-              };
-          
-
-             var validado = tipo_Impresora.FindByName(tipoImpresora);
-
-            if(validado != null){ 
-              var result = tipo_Impresora.AdicionarTipoImpresora(N_tipoImpresora);
-
-                if(result > 0){
-                    Console.WriteLine("Tipo impresora creado");  
-                    OnGet();                        
-                    // Response.Redirect("page");  
-                }else{
-                Console.WriteLine("No se pudo ingresar el registro");
-                }
-            }else{
-                     Console.WriteLine("Ya heciste un Tipo con esté Nombre");
-                }
-           
+                 mensaje= "Error, debes llenar todos los campos";
+                     
            }
            
+           //si es diferente ingresa a la consicion
+           if ( _tipoImp != tipoImpresora ){
+          
+               var N_tipoImpresora = new TipoImpresora{
+                     nombre_impresora = tipoImpresora
+
+                };  
+
+                var result = tipo_Impresora.AdicionarTipoImpresora(N_tipoImpresora);
+
+                if(result > 0){
+                        mensaje = "Tipo de impresora Agregado";  
+                        OnGet();                        
+                        // Response.Redirect("page");  
+                }else{
+                        mensaje = "No se pudo ingresar el registro";
+                       
+                }             
+           
+           }
+           TempData["mensaje"] = mensaje;           
         }
     }
 }

@@ -6,9 +6,20 @@
 
 
 <h1>@ViewData["Title"]</h1>
+
+@if( TempData["mensaje"] != null)
+{
+   <div class="alert alert-success alert-dismissible fade show" role="alert">
+     @TempData["mensaje"]
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+     </button>
+   </div>
+}
+
 <div class="row m-4" style="padding-top: 10px;">
     <div class="col-sm-12">  
-         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Tipo de Impresora</button>     
+         <button style="width: auto;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Tipo de Impresora</button>     
         <a class="btn btn-primary" asp-page="/Impresoras/GestionImpresora">ir a Impresoras</a>
     </div>
 </div>
@@ -31,10 +42,9 @@
                     <tr>
                         <td scope="row">@tipoImpresora.id</td>
                         <td>@tipoImpresora.nombre_impresora</td>                                    
-                        <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                      
-                            <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
+                         <td>
+                          <button asp-controller="Registro" asp-action="Edit" title="Editar" asp-route-id="1" class="btn btn-info"><i class="fa-sharp fa-solid fa-pen-to-square"></i>Editar</button>  
+                          <button   asp-controller="Registro" asp-action="Delete" title="Eliminar" asp-route-id="1"class="btn btn-danger"><i class="fa-regular fa-trash-can"></i>Eliminar</button> 
                         </td>
                     </tr>
                 }

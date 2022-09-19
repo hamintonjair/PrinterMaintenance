@@ -10,6 +10,6 @@ namespace HospiEnCasa.Dominio
        public int id { get; set; }
        public string n_Repuesto { get; set; }
        public string cantidad { get; set; }
-       public string valor { get; set; }
+       public string valor { get; set; }  
     }
 }

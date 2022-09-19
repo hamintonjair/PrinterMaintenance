@@ -1,6 +1,7 @@
 using System;
 using HospiEnCasa.Dominio;
 using System.Linq;
+using Microsoft.EntityFrameworkCore; //para pode uar el include
 using System.Collections.Generic;
 
 namespace HospiEnCasa.Persistencia

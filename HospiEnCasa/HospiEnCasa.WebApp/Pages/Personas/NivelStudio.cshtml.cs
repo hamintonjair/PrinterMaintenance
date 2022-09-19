@@ -31,29 +31,53 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
         public void OnPost()
         {
+            var mensaje = "";    
+
             var nivelStudio = Request.Form["nivelEstudio"];
 
+            var _nivelStudio = "";
+           //traemos el listado de personas para poder sacar la cedula y comparar           
+            OnGet();
+            foreach (var p in listadoNivelEstudio)
+            {
+                 _nivelStudio = p.estudio;
+            }
+            if(_nivelStudio == nivelStudio){
+                  mensaje = "¡Atención!,Ya heciste un Tipo de impresora con este Nombre " + nivelStudio;           
+            }
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(nivelStudio)){
 
-                  Console.WriteLine("Error, debes llenar todos los campos");
-                  OnGet();    
-           }else{
-          
-               var N_estudio = new NivelEstudio{
-                estudio = nivelStudio
-            };
-            var result = studio.AdicionarNivelEstudio(N_estudio);
-
-            if(result > 0){
-                Console.WriteLine("Nivel de estudio creado");
-                OnGet();                   
-                // Response.Redirect("page");  
-            }else{
-               Console.WriteLine("No se pudo ingresar el registro");
-            }
+                  mensaje = "Error, debes llenar todos los campos";
+                    
            }
-           
+
+           if(_nivelStudio != nivelStudio){
+          
+                var N_estudio = new NivelEstudio{
+                estudio = nivelStudio
+                };
+
+                var validado = studio.FindByName(nivelStudio);
+
+                 if(validado != null){
+
+                     var result = studio.AdicionarNivelEstudio(N_estudio);
+
+                        if(result > 0){
+                            mensaje = "Nivel de estudio agregado con exito";
+                            OnGet();                   
+                            // Response.Redirect("page");  
+                        }else{
+                        mensaje = "No se pudo ingresar el registro";
+                        }
+                  }else{
+                        mensaje = "Ya heciste un Tipo de impresora con este Nombre";
+                    }
+               
+           }
+
+           TempData["mensaje"] = mensaje;
         }
     }
 }

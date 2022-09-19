@@ -13,6 +13,7 @@ namespace HospiEnCasa.Dominio
        public string precio { get; set; }            
        public string fecha_activacion { get; set; }
        public string fecha_vencimiento { get; set; } 
+           //agregación  
        public Impresora impresora { get; set; }
     }
 }

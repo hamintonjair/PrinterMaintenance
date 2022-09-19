@@ -37,17 +37,19 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
         public void OnPost()
         {
-            var _rol = Request.Form["rol"];
+            var mensaje = "";   
+            var _rol     = Request.Form["rol"];
             var password = Request.Form["password"];
-            var persona = Request.Form["persona"];
+            var _persona  = Request.Form["persona"];
   
             //validamos que no exista para poder regiostrarlo
             var validado = rol.FindByName(_rol);
+            var validadoPersona = persona.Buscar(Int32.Parse(_persona));
          
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(_rol) || String.IsNullOrEmpty(password)){
 
-                  Console.WriteLine("Error, debes llenar todos los campos");
+                 mensaje = "Error, debes llenar todos los campos";
                   OnGet();    
            }else{
 
@@ -58,20 +60,24 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                         password = password,
                       //  persona = persona,
                     };
-                    var result = rol.AdicionarRol(N_rol);
+                        rol.AdicionarRol(N_rol);
+
+                        N_rol.persona = validadoPersona;
+                        var result =   rol.Update(N_rol);
 
                     if(result > 0){
-                        Console.WriteLine("Rol creado");
-                        OnGet();                 
+                       mensaje ="Rol agregado con exito";
+                       OnGet();                 
                         // Response.Redirect("page");  
                     }else{
-                    Console.WriteLine("No se pudo ingresar el registro");
+                        mensaje = "No se pudo ingresar el registro";
                     }
                 }else
                 {
-                  Console.WriteLine("No se puede duplicar el rol");
+                  mensaje = "No se puede duplicar el rol";
                 }
            }
+         TempData["mensaje"] = mensaje;
            
         }
     }

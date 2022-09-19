@@ -15,6 +15,7 @@ namespace HospiEnCasa.Dominio
        public string fecha_nacimiento { get; set; }
        public string direccion { get; set; }  
        public string email { get; set; }   
+           //agregación  
        public NivelEstudio nivelEstudio { get; set; }  
        public Socio socio { get; set; }     
     }

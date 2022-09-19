@@ -22,19 +22,26 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
 
         private IImpresorasRepository _impresora = new ImpresorasRepository(new HospiEnCasa.Persistencia.AppContext());
         private ITipoImpresorasRepository tipo_Impresora = new TipoImpresorasRepository(new HospiEnCasa.Persistencia.AppContext());
+        private IRepuestosRepository repuestos = new RepuestosRepository(new HospiEnCasa.Persistencia.AppContext());
         public List<TipoImpresora> listadoTipoImpresora {get; set; }
         public List<Impresora> listadoImpresora {get; set; }
+        public List<Repuesto> listadoRepuestos {get; set; }
 
+       
         public void OnGet()
         {
-            listadoImpresora = new List<Impresora>();
-            listadoImpresora = _impresora.ObtenerTodo();
             listadoTipoImpresora = new List<TipoImpresora>();
             listadoTipoImpresora = tipo_Impresora.ObtenerTodo();
+            listadoRepuestos = new List<Repuesto>();
+            listadoRepuestos = repuestos.ObtenerTodo();
+            listadoImpresora = new List<Impresora>();
+            listadoImpresora = _impresora.ObtenerTodo(); 
         }
 
         public void OnPost(){
  
+             var mensaje = "";     
+
              var impresora           = Request.Form["impresora"];
              var marca               = Request.Form["marca"];
              var tipoImpresora       = Request.Form["tipoImpresora"];
@@ -45,23 +52,23 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
              var volumenImp          = Request.Form["volumenImp"];
              var pais                = Request.Form["pais"];
              var detalles            = Request.Form["detalles"];
-             var otrasCaract         = Request.Form["otrasCaract"];          
+             var otrasCaract         = Request.Form["otrasCaract"]; 
+                
           
+
+            //validamos que no exista para poder regiostrarlo
+            var validado = tipo_Impresora.Buscar(Int32.Parse(tipoImpresora));
             
+
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(impresora) || String.IsNullOrEmpty(marca) || String.IsNullOrEmpty(tipoImpresora)
-           || String.IsNullOrEmpty(placa) || String.IsNullOrEmpty(fechaMantenimiento) || String.IsNullOrEmpty(fechaModelo)
-           || String.IsNullOrEmpty(velocidadImp) || String.IsNullOrEmpty(volumenImp) ||String.IsNullOrEmpty(pais)
-           || String.IsNullOrEmpty(detalles)){
-
-                 Console.WriteLine("Error, debes llenar todos los campos "+impresora+ " , "+marca+ ", " +tipoImpresora);
-                 Console.WriteLine("Error, debes llenar todos los campos "+placa+ " , "+fechaMantenimiento+ ", " +fechaModelo);
-                 Console.WriteLine("Error, debes llenar todos los campos "+velocidadImp+ " , "+volumenImp+ ", " +pais+ ", " +detalles);
-                 OnGet();    
+           || String.IsNullOrEmpty(placa) || String.IsNullOrEmpty(fechaMantenimiento))
+           {
+              mensaje = "Error, debes llenar todos los campos";               
           
-           }else{               
-                                
-                  var N_impresora = new Impresora{
+           }else{  
+            
+                        var N_impresora = new Impresora{
                         nombre = impresora,
                         marca = marca,
                         placa = placa,             
@@ -71,22 +78,30 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
                         pais_origen = pais, 
                         fecha_mantenimiento = fechaMantenimiento,   
                         detalles = detalles,        
-                        otros_caracteristicas = detalles,
-                        // tipoImpresora =  tipoImpresora,                   
+                        otros_caracteristicas = detalles,                                           
                     
-                    };
+                    };             
 
-                    var result = _impresora.AdicionarImpresora(N_impresora);
+                if (validado.id > 0)
+                {                  
 
-                    if(result > 0){
-                        Console.WriteLine("Impresora agregada con exito");
+                     _impresora.AdicionarImpresora(N_impresora);
+                   
+                     N_impresora.tipoImpresora = validado;
+                     var result = _impresora.Update(N_impresora);          
+
+                    if(result > 0 ){
+
+                        mensaje = "Impresora agregada con exito";
                         OnGet();    
                 
                     }else{
-                        Console.WriteLine("No se pudo ingresar el registro");
-               
-                    }              
+                        mensaje = "No se pudo agregar el registro";
+                         
+                    }        
+                }                                 
             }
+            TempData["mensaje"] = mensaje;
        }
     }
 }

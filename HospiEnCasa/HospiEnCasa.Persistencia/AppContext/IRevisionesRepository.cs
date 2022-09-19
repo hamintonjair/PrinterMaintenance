@@ -8,21 +8,21 @@ namespace HospiEnCasa.Persistencia
     public interface IRevisionesRepository
     {    
 
-        int AdicionarRevision(Revision Revision);
-        bool Add(Revision Revision);
+        int AdicionarRevision(Revision revision);
+        bool Add(Revision revision);
         Revision Buscar(int id);
         IEnumerable<Revision> GetAll();
         List<Revision> ObtenerTodo();
         // IEnumerable<Revision> FindByName(string name);
         // IEnumerable<Revision> FindMultipleParameter(string value);
-        int Update(Revision Revision);
-        int Delete(Revision Revision);
+        int Update(Revision revision);
+        int Delete(Revision revision);
 
         IEnumerable<Revision> ObtenerTodosRevision();
         // List<Revision> ObtenerRevisionPorNombre(string Revision);
         // IEnumerable<Revision> Buscador(string busqueda);
-        int ActualizarRevision(Revision Revision);
-        int EliminarRevision(Revision Revision);
+        int ActualizarRevision(Revision revision);
+        int EliminarRevision(Revision revision);
     } 
    
 }

@@ -1,4 +1,10 @@
 
+using System.Reflection.Metadata;
+using System.Runtime.ExceptionServices;
+using System.Globalization;
+using System.Text;
+using System.Runtime.Serialization.Json;
+using System.Security.Permissions;
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.ComponentModel.Design.Serialization;
@@ -19,6 +25,7 @@ using Microsoft.Extensions.Logging;
 using HospiEnCasa.Dominio;
 using HospiEnCasa.Persistencia;
 
+
 namespace HospiEnCasa.WebApp.Pages.Personas
 {
     public class GestionPersona : PageModel
@@ -36,19 +43,21 @@ namespace HospiEnCasa.WebApp.Pages.Personas
         public List<NivelEstudio> listadoNivelEstudio {get; set; }
         public List<Persona> listadoPersona {get; set; }
 
-        
+      
         public void OnGet()
         {
               
-                listadoNivelEstudio = new List<NivelEstudio>();
-                listadoNivelEstudio = studio.ObtenerTodo();
-                listadoPersona = new List<Persona>();
-                listadoPersona = persona.ObtenerTodo();
-         
-      
-        }
-        public void OnPost(){
+            listadoNivelEstudio = new List<NivelEstudio>();
+            listadoNivelEstudio = studio.ObtenerTodo();
+            listadoPersona = new List<Persona>();
+            listadoPersona = persona.ObtenerTodo();
  
+        }       
+
+        public void OnPost(){
+
+            var mensaje = "";       
+            
              var nombre      = Request.Form["nombre"];
              var apellido    = Request.Form["apellido"];
              var identificacion  = Request.Form["identificacion"];
@@ -58,21 +67,37 @@ namespace HospiEnCasa.WebApp.Pages.Personas
              var email       = Request.Form["email"];
              var _socio       = Request.Form["socio"];
              var nivel_Estudio = Request.Form["profesion"];
+             
+             var _persona = "";
+           //traemos el listado de personas para poder sacar la cedula y comparar           
+            OnGet();
+             foreach (var p in listadoPersona)
+            {
+                 _persona = p.cedula;
+            }
 
             //validamos que no exista para poder regiostrarlo
             var validado = studio.Buscar(Int32.Parse(nivel_Estudio));
-          
-            
+                          
+            if(_persona == identificacion){
+                  mensaje = "¡Atención!, Ya existe un registro con esta identificación, " + identificacion;           
+            }
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
-           if(String.IsNullOrEmpty(identificacion)){
+           if(String.IsNullOrEmpty(apellido) || String.IsNullOrEmpty(nombre) || 
+           String.IsNullOrEmpty(identificacion) || String.IsNullOrEmpty(telefono)
+           || String.IsNullOrEmpty(email) ||  String.IsNullOrEmpty(_socio) 
+           ||  String.IsNullOrEmpty(nivel_Estudio)){
 
-                  Console.WriteLine("Error, debes llenar todos los campos");
-                  OnGet();    
-           }else{
+                 mensaje = "Error, debes llenar todos los campos";               
+                 OnGet();    
+           
+           }
+           if ( _persona != identificacion ){
 
                 if (validado.id > 0)
                 {  
-                  var  id =  validado.id;               
+             
+                //    var  Estudio =  validado.id;               
                
                   var N_persona = new Persona{
                         nombre = nombre,
@@ -81,27 +106,49 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                         telefono = telefono,
                         fecha_nacimiento = fecha,
                         direccion = direccion,
-                        email = email, 
-                       //  nivelEstudio = id,   
-                      // fecha = new Datetime();                                
+                        email = email,                       
+                                                                       
                         socio =  (_socio == "1" ? Socio.Si : Socio.No),
                     
-                    };
-                      var result = persona.AdicionarPersona(N_persona);
+                     };                     
+                      persona.Add(N_persona);
 
+                      N_persona.nivelEstudio = validado;
+                      var result = persona.Update(N_persona);
+                      
+                      
                     if(result > 0){
-                        Console.WriteLine("Nivel de estudio creado " + id+  "," + nivel_Estudio);
-                        OnGet();    
+                        mensaje = "Nivel de estudio creado " ;                    
+                        OnGet();     
                 
                     }else{
-                    Console.WriteLine("No se pudo ingresar el registro");
+                        mensaje = "No se pudo agregar el registro";                   
                     }
                 }else{
-                      Console.WriteLine("Ya existe un registro con esto céudla");
-                }
-                
-            }
-              
+                    mensaje = "Error, No se pudo agregar el registro";                  
+                }              
+           }
+     
+         TempData["mensaje"] = mensaje;
+
         }
+        //https://www.youtube.com/watch?v=3mu2K5vXcxc&ab_channel=render2web
+       
+    //    public IActionResult Edit(int ? id)
+    //    {
+    //      if(id == null || id == 0)
+    //      {
+    //         return NotFound();
+    //      }
+
+    //      var _persona = persona.Buscar(id);
+
+    //      if(_persona == null)
+    //      {
+    //           return NotFound();
+    //      } 
+
+    //     // return Redirect(".\GestionPersona");
+    //    }
     }
 }

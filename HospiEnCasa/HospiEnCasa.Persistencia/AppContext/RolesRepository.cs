@@ -1,6 +1,7 @@
 using System;
 using HospiEnCasa.Dominio;
 using System.Linq;
+using Microsoft.EntityFrameworkCore; //para pode uar el include
 using System.Collections.Generic;
 
 namespace HospiEnCasa.Persistencia
@@ -35,7 +36,7 @@ namespace HospiEnCasa.Persistencia
         }
         //listar
         List<Rol> IRolesRepository.ObtenerTodo(){
-            return _context.Roles.ToList();
+            return _context.Roles.Include(p => p.persona).ToList();
         }
         //buscar por nombre
         IEnumerable<Rol> IRolesRepository.FindByName(string name){

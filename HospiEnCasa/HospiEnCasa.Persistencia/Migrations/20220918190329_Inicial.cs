@@ -111,8 +111,7 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     tipo_Rol = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    personaid = table.Column<int>(type: "int", nullable: true),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    personaid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -121,35 +120,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                         name: "FK_Roles_Personas_personaid",
                         column: x => x.personaid,
                         principalTable: "Personas",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CompraRepuestos",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    tipo_repuesto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    valor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_compra = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    impresoraid = table.Column<int>(type: "int", nullable: true),
-                    repuestoid = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CompraRepuestos", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_CompraRepuestos_Impresoras_impresoraid",
-                        column: x => x.impresoraid,
-                        principalTable: "Impresoras",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_CompraRepuestos_Repuestos_repuestoid",
-                        column: x => x.repuestoid,
-                        principalTable: "Repuestos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -178,6 +148,44 @@ namespace HospiEnCasa.Persistencia.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Revisiones",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    valor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    detalles = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    fecha_revision = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    personaid = table.Column<int>(type: "int", nullable: true),
+                    impresoraid = table.Column<int>(type: "int", nullable: true),
+                    repuestoid = table.Column<int>(type: "int", nullable: true),
+                    revision = table.Column<int>(type: "int", nullable: false),
+                    estado = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Revisiones", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Revisiones_Impresoras_impresoraid",
+                        column: x => x.impresoraid,
+                        principalTable: "Impresoras",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Revisiones_Personas_personaid",
+                        column: x => x.personaid,
+                        principalTable: "Personas",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Revisiones_Repuestos_repuestoid",
+                        column: x => x.repuestoid,
+                        principalTable: "Repuestos",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SeguroImpresoras",
                 columns: table => new
                 {
@@ -201,51 +209,50 @@ namespace HospiEnCasa.Persistencia.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Revisiones",
+                name: "Loggin",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    valor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    detalles = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_revision = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    personaid = table.Column<int>(type: "int", nullable: true),
-                    impresoraid = table.Column<int>(type: "int", nullable: true),
-                    compraid = table.Column<int>(type: "int", nullable: true),
-                    estado = table.Column<int>(type: "int", nullable: false)
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    rolid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Revisiones", x => x.id);
+                    table.PrimaryKey("PK_Loggin", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Revisiones_CompraRepuestos_compraid",
-                        column: x => x.compraid,
-                        principalTable: "CompraRepuestos",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Revisiones_Impresoras_impresoraid",
-                        column: x => x.impresoraid,
-                        principalTable: "Impresoras",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Revisiones_Personas_personaid",
-                        column: x => x.personaid,
-                        principalTable: "Personas",
+                        name: "FK_Loggin_Roles_rolid",
+                        column: x => x.rolid,
+                        principalTable: "Roles",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_CompraRepuestos_impresoraid",
-                table: "CompraRepuestos",
-                column: "impresoraid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CompraRepuestos_repuestoid",
-                table: "CompraRepuestos",
-                column: "repuestoid");
+            migrationBuilder.CreateTable(
+                name: "Modulos",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    usuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    repuestos = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    seguro = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    impresora = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    impresion3d = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    revision = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    finalizado = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    rolid = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Modulos", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Modulos_Roles_rolid",
+                        column: x => x.rolid,
+                        principalTable: "Roles",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Impresion3D_impresoraid",
@@ -258,14 +265,19 @@ namespace HospiEnCasa.Persistencia.Migrations
                 column: "tipoImpresoraid");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Loggin_rolid",
+                table: "Loggin",
+                column: "rolid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Modulos_rolid",
+                table: "Modulos",
+                column: "rolid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Personas_nivelEstudioid",
                 table: "Personas",
                 column: "nivelEstudioid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Revisiones_compraid",
-                table: "Revisiones",
-                column: "compraid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Revisiones_impresoraid",
@@ -276,6 +288,11 @@ namespace HospiEnCasa.Persistencia.Migrations
                 name: "IX_Revisiones_personaid",
                 table: "Revisiones",
                 column: "personaid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Revisiones_repuestoid",
+                table: "Revisiones",
+                column: "repuestoid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_personaid",
@@ -294,31 +311,34 @@ namespace HospiEnCasa.Persistencia.Migrations
                 name: "Impresion3D");
 
             migrationBuilder.DropTable(
-                name: "Revisiones");
+                name: "Loggin");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "Modulos");
+
+            migrationBuilder.DropTable(
+                name: "Revisiones");
 
             migrationBuilder.DropTable(
                 name: "SeguroImpresoras");
 
             migrationBuilder.DropTable(
-                name: "CompraRepuestos");
-
-            migrationBuilder.DropTable(
-                name: "Personas");
-
-            migrationBuilder.DropTable(
-                name: "Impresoras");
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Repuestos");
 
             migrationBuilder.DropTable(
-                name: "NivelEstudios");
+                name: "Impresoras");
+
+            migrationBuilder.DropTable(
+                name: "Personas");
 
             migrationBuilder.DropTable(
                 name: "TipoImpresoras");
+
+            migrationBuilder.DropTable(
+                name: "NivelEstudios");
         }
     }
 }

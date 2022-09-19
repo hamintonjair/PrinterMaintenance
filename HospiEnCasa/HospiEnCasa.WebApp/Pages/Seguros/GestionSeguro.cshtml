@@ -1,10 +1,20 @@
 @page
 @model HospiEnCasa.WebApp.Pages.Seguros.GestionSeguro
 @{
-    ViewData["Title"] = "Gestionar Seguros";
+    ViewData["Title"] = "Registro de Seguros";
 }
 
 <h1>@ViewData["Title"]</h1>
+
+@if( TempData["mensaje"] != null)
+{
+   <div class="alert alert-success alert-dismissible fade show" role="alert">
+     @TempData["mensaje"]
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+     </button>
+   </div>
+}
 
 <div class="row m-4" style="padding-top: 10px;">
     <div class="col-sm-12">
@@ -15,8 +25,8 @@
 </div>
 
 <div id="container" class="container">
-    <div margin:0 class="col-sm-12 text-center">
-        <table id="customerDatatable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+    <div margin:0 class="col-sm-12">
+        <table id="customerDatatable"  class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
             <thead>
                 <tr>
                     <th>#</th>
@@ -35,14 +45,13 @@
                         <td scope="row">@seguro.id</td>
                         <td>@seguro.tipo_seguro</td>
                         <td>@seguro.precio</td>
-                        <td>@seguro.impresora</td>
+                        <td>@seguro.impresora.nombre</td>
                         <td>@seguro.fecha_activacion</td>    
                         <td>@seguro.fecha_vencimiento</td>
                                              
                         <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                        
-                            <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
+                            <button asp-controller="Registro" asp-action="Edit" title="Editar" asp-route-id="1" class="btn btn-info"><i class="fa-sharp fa-solid fa-pen-to-square"></i>Editar</button>  
+                          <button   asp-controller="Registro" asp-action="Delete" title="Eliminar" asp-route-id="1"class="btn btn-danger"><i class="fa-regular fa-trash-can"></i>Eliminar</button> 
                         </td>
                     </tr>
                 }           

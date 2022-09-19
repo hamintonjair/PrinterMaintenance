@@ -2,15 +2,25 @@
 @model HospiEnCasa.WebApp.Pages.Impresoras.GestionImpresora
 @{
     
-    ViewData["Title"] = "Gestionar Impresoras";
+    ViewData["Title"] = "Registro de Impresoras";
 }
 
 <h1>@ViewData["Title"]</h1>
 
+@if( TempData["mensaje"] != null)
+{
+   <div class="alert alert-success alert-dismissible fade show" role="alert">
+     @TempData["mensaje"]
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+     </button>
+   </div>
+}
+
 <div class="row m-4" style="padding-top: 10px;">
     <div class="col-sm-12">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FormModal">Impresora</button>
-          <a class="btn btn-primary" asp-page="/Impresoras/Tipo_Impresora">ir a Tipo de impresoras</a>
+        <a class="btn btn-primary" asp-page="/Impresoras/Tipo_Impresora">ir a Tipo de impresoras</a>
     </div>
   
 </div>
@@ -23,9 +33,9 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Marca</th>
-                         <th>Tipo imp.</th>
-                        <th>Fecha mantenimiento</th>
-                        <th>Placa</th>                                                              
+                        <th>Tipo imp.</th>
+                        <th>Mantenimiento</th>
+                        <th>Placa</th>                                                                           
                         <th>Detalles</th>                        
                         <th>Acción</th>
                     </tr>
@@ -37,14 +47,13 @@
                         <td scope="row">@_impresoras.id</td>
                         <td>@_impresoras.nombre</td>         
                         <td>@_impresoras.marca</td>       
-                        <td>@_impresoras.tipoImpresora</td>       
+                        <td>@_impresoras.tipoImpresora.nombre_impresora</td>       
                         <td>@_impresoras.fecha_mantenimiento</td>  
-                        <td>@_impresoras.placa</td>     
+                        <td>@_impresoras.placa</td>                  
                         <td>@_impresoras.detalles</td>                                                      
-                        <td>
-                            <a asp-controller="Registro" asp-action="Edit" asp-route-id="1" class="btn btn-info">Editar</a>                      
-                            <a asp-controller="Registro" asp-action="Delete" asp-route-id="1"
-                            class="btn btn-danger">Eliminar</a>
+                         <td>
+                           <button asp-controller="Registro" asp-action="Edit" title="Editar" asp-route-id="1" class="btn btn-info"><i class="fa-sharp fa-solid fa-pen-to-square"></i>Editar</button>  
+                          <button   asp-controller="Registro" asp-action="Delete" title="Eliminar" asp-route-id="1"class="btn btn-danger"><i class="fa-regular fa-trash-can"></i>Eliminar</button> 
                         </td>
                     </tr>
                 }                   
@@ -59,7 +68,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header " style="background-color:#2668AC ;" >
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro - Impresoras</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -72,30 +81,30 @@
                   <div class="form-row" style="padding-top:14px;">
                         <div class="form-group col-md-4">
                             <label>Nombre Impresora (<font color="red">*</font>)</label>
-                            <input type="text" id="impresora" name="impresora" class="form-control" placeholder="Nombre Impresora">
+                            <input type="text" id="impresora" name="impresora" class="form-control" placeholder="Nombre Impresora" required="">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Marca (<font color="red">*</font>)</label>
-                            <input type="text"id="marca" name="marca" class="form-control" placeholder="Marca">
+                            <input type="text"id="marca" name="marca" class="form-control" placeholder="Marca" required="">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Tipo Impresora (<font color="red">*</font>)</label>
                             <select  name="tipoImpresora" type="text" class="form-control" required="">
-                                <option value="" selected="selected">Seleccionar..</option>
+                                <option value="" selected="selected">Seleccionar..</option>                                
                                  @foreach (var tipo in Model.listadoTipoImpresora)
                                 {
                                     <option value="@tipo.id">@tipo.nombre_impresora</option>
-                                }
+                                }                               
                             </select>
                         </div>
                     </div>
                      <div class="form-row">
                         <div class="form-group col-md-4">
                             <label>Placa (<font color="red">*</font>)</label>
-                            <input type="text" id="placa" name="placa" class="form-control" placeholder="Placa">
+                            <input type="text" id="placa" name="placa" class="form-control" placeholder="Placa" required="">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Fecha de mantenimiento (<font color="red">*</font>)</label>
+                            <label>Fecha de Ingreso (<font color="red">*</font>)</label>
                             <input type="date" class="form-control" id="fechaMantenimiento" name="fechaMantenimiento"  min="10" max="10" placeholder="01-02-2017" required="">
                         </div>
                         <div class="form-group col-md-4">
@@ -120,7 +129,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-8">
                             <label>Detalles (<font color="red">*</font>)</label>
-                            <textarea  type="text" id="detalles" name="detalles" class="form-control" placeholder="detalles"></textarea>
+                            <textarea  type="text" id="detalles" name="detalles" class="form-control" placeholder="detalles" required=""></textarea>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Otras caracteristicas </label>
