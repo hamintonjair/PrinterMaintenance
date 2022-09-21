@@ -125,7 +125,7 @@ td {
 
 tbody td {
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Times New Roman', Times, serif;
 
   background-color: rgb(208, 224, 224);
@@ -179,7 +179,8 @@ h1{
 
 }
 .container{  
-  background: #aecde7;
+  column-width: auto;
+  /* background: #aecde7; */
   border-radius: 10px;
   border: none;
   padding: 10px;

@@ -1,3 +1,9 @@
+
+using System.Security.Principal;
+using System.Reflection.Metadata;
+using System.Xml.XPath;
+using System.Reflection;
+using System.Runtime.Intrinsics.X86;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +39,66 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
 
             if(impresiones == null){
 
-                return RedirectToPage("./Gestionimpresiones3D");
+                return RedirectToPage("./Gestionimpresion3D");
 
             }else{
                 return Page();
             }
+        }
+        public IActionResult OnPost(){
+
+            var mensaje = ""; 
+
+            var id             = Request.Form["id"];
+            var cliente        = Request.Form["cliente"];
+            var Tipo_impresion = Request.Form["impresion3d"];
+            var cantidad       = Request.Form["cantidad"];
+            var precio         = Request.Form["precio"];
+
+            var impresion3d = impresion.Buscar(Int32.Parse(id));
+
+            if(impresion3d != null ){
+
+                impresion3d.cliente = cliente;
+                impresion3d.Tipo_impresion = Tipo_impresion;
+                impresion3d.cantidad = cantidad;
+                impresion3d.precio = precio;
+
+                var result = impresion.Update(impresion3d);
+
+                if(result > 0){
+
+                    mensaje ="Se actualizaron los datos a "+ cliente;
+                }else
+                {                   
+                   mensaje ="No fue posible la actualización"+ cliente;                    
+                }
+            }else
+            {
+                 mensaje ="Error, Se produjo un problemainterno, intente nuevamente ";
+            }
+            TempData["mensaje"] = mensaje;
+            return RedirectToPage("./Gestionimpresion3D");
+        }
+
+        public IActionResult OnPostUpdate(){
+
+            var mensaje = "";           
+          
+            mensaje ="Consumo Ajax";
+          
+            TempData["mensaje"] = mensaje;
+            return Content("impresiones3d");
+        }
+
+         public IActionResult OnPostUpdateJson([FromBody]Impresiones3D impresiones3d){
+
+            var mensaje = "";           
+          
+            mensaje ="Atención, Se actualizaron ";
+          
+            TempData["mensaje"] = mensaje;
+            return new JsonResult( mensaje);
         }
     }
 }

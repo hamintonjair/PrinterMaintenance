@@ -1,20 +1,4 @@
 
-using System.Reflection.Metadata;
-using System.Runtime.ExceptionServices;
-using System.Globalization;
-using System.Text;
-using System.Runtime.Serialization.Json;
-using System.Security.Permissions;
-using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.ComponentModel.Design.Serialization;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
-using System.Runtime.Serialization;
-using System.IO.Pipes;
-using System.Data;
-using System.Data.Common;
-using System.Net.Cache;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,8 +29,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
       
         public void OnGet()
-        {
-              
+        {             
             listadoNivelEstudio = new List<NivelEstudio>();
             listadoNivelEstudio = studio.ObtenerTodo();
             listadoPersona = new List<Persona>();
@@ -97,9 +80,10 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                 if (validado.id > 0)
                 {  
              
-                //    var  Estudio =  validado.id;               
+            //    var  Estudio =  validado.id;               
                
                   var N_persona = new Persona{
+
                         nombre = nombre,
                         apellidos = apellido,
                         cedula = identificacion,             
@@ -110,7 +94,8 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                                                                        
                         socio =  (_socio == "1" ? Socio.Si : Socio.No),
                     
-                     };                     
+                     }; 
+                                         
                       persona.Add(N_persona);
 
                       N_persona.nivelEstudio = validado;
@@ -118,7 +103,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                       
                       
                     if(result > 0){
-                        mensaje = "Nivel de estudio creado " ;                    
+                        mensaje = "Nivel de estudio creado con exito" ;                    
                         OnGet();     
                 
                     }else{

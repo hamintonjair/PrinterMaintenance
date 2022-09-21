@@ -1,7 +1,9 @@
 @page
 @model HospiEnCasa.WebApp.Pages.Impresion3D.Edit
 @{
-    ViewData["Title"] = "Editar Registros Impresiones 3D";
+    ViewData["Title"] = "Actualizar Registros de Impresiones 3D";
+    var Impresion3D = Model.impresiones;
+
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -11,32 +13,34 @@
 <div id="container" class="container">
     <div margin:0 class="col-sm-12">
         <form method="post" action="" id="Editar">
-            @Html.AntiForgeryToken()
+         <input type="hidden" value="@Impresion3D.id" id ="id" name="id">
+           
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Cliente</label>
                     <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Editar Cliente"
-                        value="">
+                        value="@Impresion3D.cliente">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Tipo de impresión</label>
-                    <input type="text" class="form-control" id="tipoImpresion" name="identificacion"
-                        placeholder="Editar tipo de impresión" value="">
+                    <input type="text" class="form-control" id="tipoImpresion" name="tipoImpresion"
+                        placeholder="Editar tipo de impresión" value="@Impresion3D.Tipo_impresion">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputAddress">Cantidad</label>
                     <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Editar cantidad"
-                        value="">
+                        value="@Impresion3D.cantidad">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputAddress2">Precio</label>
                     <input type="number" class="form-control" id="precio" name="precio" placeholder="Editar Precio"
-                        value="">
+                        value="@Impresion3D.precio">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary"> Actualizar</button>
+            <a type="reset" asp-page="./GestionImpresion3D" class="btn btn-info"> Cancelar</a>
         </form>
     </div>
 </div>
@@ -53,6 +57,7 @@
             </div>
             <div class="modal-body">
                 <form method="post">
+                     @Html.AntiForgeryToken()
                     <p class="text-primary">
                         Los campos con asterisco (<font color="red">*</font>) son obligatorios.
                     </p>
