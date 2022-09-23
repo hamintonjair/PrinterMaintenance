@@ -21,7 +21,7 @@
     <div class="col-sm-12">
         <button style="width: auto;" type="button" class="btn btn-primary" data-toggle="modal"
             data-target="#FormModal">Tipo de Impresora</button>
-        <a class="btn btn-primary" asp-page="/Impresoras/GestionImpresora">ir a Impresoras</a>
+        <a style="width: auto; class="btn btn-primary" asp-page="/Impresoras/GestionImpresora">ir a Impresoras</a>
     </div>
 </div>
 
@@ -45,9 +45,9 @@
                             <td>@tipoImpresora.nombre_impresora</td>
                             <td>
                                 <button asp-controller="Registro" asp-action="Edit" title="Editar" asp-route-id="1"
-                                class="btn btn-info"><i class="fa-sharp fa-solid fa-pen-to-square"></i>Editar</button>
+                                class="btn btn-info"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
                                 <button asp-controller="Registro" asp-action="Delete" title="Eliminar" asp-route-id="1"
-                                class="btn btn-danger"><i class="fa-regular fa-trash-can"></i>Eliminar</button>
+                                class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
                             </td>
                         </tr>
                     }
@@ -82,8 +82,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button style="width: auto;"  type="reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button style="width: auto;"  type="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </form>
             </div>

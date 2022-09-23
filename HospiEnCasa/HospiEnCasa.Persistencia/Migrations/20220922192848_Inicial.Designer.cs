@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospiEnCasa.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220918190329_Inicial")]
+    [Migration("20220922192848_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,26 @@ namespace HospiEnCasa.Persistencia.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("HospiEnCasa.Dominio.Envio", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("correo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("personaid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("personaid");
+
+                    b.ToTable("Envio");
+                });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresiones3D", b =>
                 {
@@ -239,6 +259,9 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("actualizacion")
+                        .HasColumnType("int");
+
                     b.Property<string>("detalles")
                         .HasColumnType("nvarchar(max)");
 
@@ -339,6 +362,15 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.HasKey("id");
 
                     b.ToTable("TipoImpresoras");
+                });
+
+            modelBuilder.Entity("HospiEnCasa.Dominio.Envio", b =>
+                {
+                    b.HasOne("HospiEnCasa.Dominio.Persona", "persona")
+                        .WithMany()
+                        .HasForeignKey("personaid");
+
+                    b.Navigation("persona");
                 });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresiones3D", b =>

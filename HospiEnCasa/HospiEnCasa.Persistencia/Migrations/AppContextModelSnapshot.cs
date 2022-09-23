@@ -19,6 +19,26 @@ namespace HospiEnCasa.Persistencia.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("HospiEnCasa.Dominio.Envio", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("correo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("personaid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("personaid");
+
+                    b.ToTable("Envio");
+                });
+
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresiones3D", b =>
                 {
                     b.Property<int>("id")
@@ -237,6 +257,9 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("actualizacion")
+                        .HasColumnType("int");
+
                     b.Property<string>("detalles")
                         .HasColumnType("nvarchar(max)");
 
@@ -337,6 +360,15 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.HasKey("id");
 
                     b.ToTable("TipoImpresoras");
+                });
+
+            modelBuilder.Entity("HospiEnCasa.Dominio.Envio", b =>
+                {
+                    b.HasOne("HospiEnCasa.Dominio.Persona", "persona")
+                        .WithMany()
+                        .HasForeignKey("personaid");
+
+                    b.Navigation("persona");
                 });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresiones3D", b =>

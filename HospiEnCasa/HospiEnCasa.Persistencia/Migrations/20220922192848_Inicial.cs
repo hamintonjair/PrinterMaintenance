@@ -104,6 +104,26 @@ namespace HospiEnCasa.Persistencia.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Envio",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    correo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    personaid = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Envio", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Envio_Personas_personaid",
+                        column: x => x.personaid,
+                        principalTable: "Personas",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
@@ -160,6 +180,7 @@ namespace HospiEnCasa.Persistencia.Migrations
                     impresoraid = table.Column<int>(type: "int", nullable: true),
                     repuestoid = table.Column<int>(type: "int", nullable: true),
                     revision = table.Column<int>(type: "int", nullable: false),
+                    actualizacion = table.Column<int>(type: "int", nullable: false),
                     estado = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -255,6 +276,11 @@ namespace HospiEnCasa.Persistencia.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Envio_personaid",
+                table: "Envio",
+                column: "personaid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Impresion3D_impresoraid",
                 table: "Impresion3D",
                 column: "impresoraid");
@@ -307,6 +333,9 @@ namespace HospiEnCasa.Persistencia.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Envio");
+
             migrationBuilder.DropTable(
                 name: "Impresion3D");
 

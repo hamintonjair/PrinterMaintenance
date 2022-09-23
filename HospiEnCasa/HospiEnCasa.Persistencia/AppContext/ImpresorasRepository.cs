@@ -36,8 +36,7 @@ namespace HospiEnCasa.Persistencia
         }
         //listar
         List<Impresora> IImpresorasRepository.ObtenerTodo(){
-            _context.Impresoras.Include(p => p.tipoImpresora).ToList();
-            return _context.Impresoras.ToList(); 
+           return   _context.Impresoras.Include(p => p.tipoImpresora).ToList();          
         }
         //buscar por nombre
         IEnumerable<Impresora> IImpresorasRepository.FindByName(string name){

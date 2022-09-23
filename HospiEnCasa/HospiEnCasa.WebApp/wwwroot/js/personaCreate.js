@@ -34,6 +34,9 @@ function loadDataTable(){
             case 4:
                 $('#precio').val($(this).text());
                 break;
+            case 5:
+                $('#impresora').val($(this).text());
+                break;
            
         }
 
@@ -52,7 +55,9 @@ $(document).on('click','#btnActualizar', function (e){
         "Cliente": $("#cliente").val(), 
         "Impresion3D": $("#impresion3d").val(),     
         "Cantidad": $("#cantidad").val(), 
-        "Precio": $("#precio").val() }
+        "Precio": $("#precio").val(),
+        "Impresora": $("#impresora").val() 
+    }
 
     $.ajax({   
 
@@ -67,7 +72,7 @@ $(document).on('click','#btnActualizar', function (e){
 
     })
     . done(function (result) {
-        alert(result);
+        Console.WriteLine(result);
        
     })
     . fail(function (error) {
@@ -75,6 +80,40 @@ $(document).on('click','#btnActualizar', function (e){
     });
 
  });
+
+//  $(document).on('click', '#customerDatatable tbody tr td a.btn.btn-danger', function(){
+        
+//     $(this).parent().parent().find('td').each(function(index){
+       
+//     });
+    
+//     $('#modalEliminar').modal('show');
+// });
+
+// $("#btnEliminar").click(function(){
+       
+//     $.ajax({
+//         type: "POST",
+//         url: "/GestionPersonas/List?handler=Delete",
+//         contentType: "application/x-www-form-urlencoded; charset=utf-8",
+//         dataType: "html",
+//         headers: {
+//             "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+//         },
+//         data: { "Id" : $("#idPersonaEliminar").val(), "TipoPersona" : $("#idTipoPersonaEliminar").val()},
+//     })
+//     .done(function (result) {
+//         console.log(result);
+//         alert(result);                    
+//         location.reload();
+//     })
+//     .fail(function (error) {
+//         console.log(error);
+//         alert("Código: " + error.status + ", Error: " + error.responseText);
+//     });
+
+// });
+
 
 // //  $().ready(function(){
     

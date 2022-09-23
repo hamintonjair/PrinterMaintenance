@@ -17,6 +17,7 @@ namespace HospiEnCasa.Dominio
        public Impresora impresora { get; set; }
        public Repuesto repuesto { get; set; }
        public TipoRevision revision { get; set; }
+       public Actualizacion_Software actualizacion {get; set;}
        public Estado estado { get; set; }
     }
     

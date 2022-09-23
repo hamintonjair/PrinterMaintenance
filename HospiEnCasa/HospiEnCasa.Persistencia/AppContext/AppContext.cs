@@ -11,6 +11,7 @@ namespace HospiEnCasa.Persistencia
     public class AppContext : DbContext
     {
        public DbSet<Persona> Personas {get; set;}
+       public DbSet<Envio> Envio {get; set;}
        public DbSet<Modulo> Modulos {get; set;}             
        public DbSet<Impresiones3D> Impresion3D {get; set;}
        public DbSet<Impresora> Impresoras {get; set;}          

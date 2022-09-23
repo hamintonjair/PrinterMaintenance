@@ -93,12 +93,35 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
 
          public IActionResult OnPostUpdateJson([FromBody]Impresiones3D impresiones3d){
 
-            var mensaje = "";           
-          
-            mensaje ="Atención, Se actualizaron ";
-          
+            var mensaje = "";          
+                
+            var _impresion3d = impresion.Buscar(impresiones3d.id);
+
+            if(_impresion3d != null ){
+
+                _impresion3d.cliente = impresiones3d.cliente;
+                _impresion3d.Tipo_impresion = impresiones3d.Tipo_impresion;
+                _impresion3d.cantidad = impresiones3d.cantidad;
+                _impresion3d.precio = impresiones3d.precio;
+                _impresion3d.impresora = impresiones3d.impresora;
+
+                var result = impresion.Update(_impresion3d);
+
+                if(result > 0){
+
+                    mensaje ="Se actualizaron los datos a "+ _impresion3d.cliente;
+                }else
+                {                   
+                   mensaje ="No fue posible la actualización "+ _impresion3d.cliente;                    
+                }
+            }else
+            {
+                 mensaje ="Error, Se produjo un problemainterno, intente nuevamente ";
+            }
+            
             TempData["mensaje"] = mensaje;
-            return new JsonResult( mensaje);
+            return new JsonResult( _impresion3d.id);
+            
         }
     }
 }
