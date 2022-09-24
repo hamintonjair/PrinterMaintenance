@@ -82,15 +82,15 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             // return RedirectToPage("./Gestionimpresion3D");
         }
 
-        public IActionResult OnPostUpdate(){
+        // public IActionResult OnPostUpdate(){
 
-            var mensaje = "";           
+        //     var mensaje = "";           
           
-            mensaje ="Consumo Ajax";
+        //     mensaje ="Consumo Ajax";
           
-            TempData["mensaje"] = mensaje;
-            return Content("impresiones3d");
-        }
+        //     TempData["mensaje"] = mensaje;
+        //     return Content("impresiones3d");
+        // }
 
         public IActionResult OnPostUpdateJson([FromBody]Impresiones3D impresiones3d){
 
@@ -135,7 +135,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
                     
                     var result = impresion.Delete(_impresion);    
 
-                      if( result > 0){
+                  if( result > 0){
                         return Content("Se eliminó la persona con exito");
                     }else{
                         return Content("No se logro eliminar la persona");
@@ -146,10 +146,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
                     
                   
                }
-                // // return Content("No existe la persona a eliminar");
-             
-                // // return Content("");
-                // TempData["mensaje"] = mensaje;
+           
         }
     }
 }
