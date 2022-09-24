@@ -25,13 +25,14 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
         public List<Impresiones3D> listadoImpresion3D {get; set; }
         public List<Impresora> listadoImpresora {get; set; }
         
-        public void OnGet()
+        public IActionResult OnGet()
         {
              
             listadoImpresion3D = new List<Impresiones3D>();
             listadoImpresion3D = impresion.ObtenerTodo();
             listadoImpresora = new List<Impresora>();
             listadoImpresora = _impresora.ObtenerTodo(); 
+            return Page();
         }
 
         public void OnPost()

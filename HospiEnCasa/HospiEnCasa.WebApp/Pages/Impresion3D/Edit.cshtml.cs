@@ -44,8 +44,9 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             }else{
                 return Page();
             }
-        }
-        public IActionResult OnPost(){
+        }        
+
+        public void OnPost(){
 
             var mensaje = ""; 
 
@@ -78,7 +79,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
                  mensaje ="Error, Se produjo un problemainterno, intente nuevamente ";
             }
             TempData["mensaje"] = mensaje;
-            return RedirectToPage("./Gestionimpresion3D");
+            // return RedirectToPage("./Gestionimpresion3D");
         }
 
         public IActionResult OnPostUpdate(){
@@ -91,7 +92,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             return Content("impresiones3d");
         }
 
-         public IActionResult OnPostUpdateJson([FromBody]Impresiones3D impresiones3d){
+        public IActionResult OnPostUpdateJson([FromBody]Impresiones3D impresiones3d){
 
             var mensaje = "";          
                 
@@ -122,6 +123,33 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             TempData["mensaje"] = mensaje;
             return new JsonResult( _impresion3d.id);
             
+        }
+
+        public IActionResult OnPostDelete(string Id){
+
+            //  var mensaje = "";   
+            
+                var _impresion = impresion.Buscar( Int32.Parse(Id) );
+
+                if( impresion != null){
+                    
+                    var result = impresion.Delete(_impresion);    
+
+                      if( result > 0){
+                        return Content("Se eliminó la persona con exito");
+                    }else{
+                        return Content("No se logro eliminar la persona");
+                    }
+                }else{
+
+                  return Content("No existe la persona a eliminar");
+                    
+                  
+               }
+                // // return Content("No existe la persona a eliminar");
+             
+                // // return Content("");
+                // TempData["mensaje"] = mensaje;
         }
     }
 }
