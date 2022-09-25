@@ -38,7 +38,7 @@ namespace HospiEnCasa.WebApp.Pages.Modulos
             listadoPersona = new List<Persona>();
             listadoPersona = _persona.ObtenerTodo();
         }
-        public void OnPost()
+        public IActionResult OnPost()
         {
             var mensaje = "";    
 
@@ -53,12 +53,12 @@ namespace HospiEnCasa.WebApp.Pages.Modulos
       
              //validamos que no exista para poder regiostrarlo
             var validado = _rol.Buscar(Int32.Parse(rol));          
-           
+            
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(rol)){
 
                 mensaje = "Debes Escoger un rol";
-                  OnGet();
+                
            }   
             var _id="" ;                    
             OnGet();
@@ -71,7 +71,7 @@ namespace HospiEnCasa.WebApp.Pages.Modulos
            if (_id == validado.tipo_Rol)     
             {                   
                 mensaje = "Ya tiene asignado unos módulos, si va actualizar un módulo debes editarlo";
-                OnGet();   
+              
                                                        
             }else{
 
@@ -94,13 +94,14 @@ namespace HospiEnCasa.WebApp.Pages.Modulos
                 if(result > 0){
 
                   mensaje = "Los módulos fueron asignados con exito ";
-                  OnGet();                   
-                                
+                  TempData["mensaje"] = mensaje;                 
+                  return RedirectToPage("/Modulo/Modulos");                 
                  }else{
                    mensaje = "No se pudo asignar los módulo";
                  }           
             };     
-           TempData["mensaje"] = mensaje;
+            TempData["mensaje"] = mensaje;       
+            return Page();
         }
     }
 }

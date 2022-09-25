@@ -134,16 +134,11 @@ tbody td {
 tfoot th {
   text-align: right;
 }
-tbody, td, #estado{
-  margin: 10%;
-  padding-top: 5%;
-  
-}
 
 button{
   width:  100px;
   height: 40px;
-  margin: 2px;
+  margin: 0px;
   background: #1b6ec2;
   border-radius: 10px;
   border: none;
@@ -154,11 +149,11 @@ button{
  
 }
 
-tbody, td, button{
+/* tbody, td, button{
   width:  50px;
   height: 40px;
 
-}
+} */
 h1{
   text-align: center;
   background-color:  rgb(208, 224, 224);

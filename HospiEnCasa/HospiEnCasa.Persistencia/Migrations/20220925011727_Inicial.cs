@@ -7,6 +7,22 @@ namespace HospiEnCasa.Persistencia.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Impresion3D",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    cliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tipo_impresion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    cantidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    precio = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Impresion3D", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "NivelEstudios",
                 columns: table => new
                 {
@@ -145,29 +161,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Impresion3D",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    cliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tipo_impresion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    cantidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    precio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    impresoraid = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Impresion3D", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Impresion3D_Impresoras_impresoraid",
-                        column: x => x.impresoraid,
-                        principalTable: "Impresoras",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Revisiones",
                 columns: table => new
                 {
@@ -279,11 +272,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                 name: "IX_Envio_personaid",
                 table: "Envio",
                 column: "personaid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Impresion3D_impresoraid",
-                table: "Impresion3D",
-                column: "impresoraid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Impresoras_tipoImpresoraid",

@@ -31,7 +31,7 @@ namespace HospiEnCasa.WebApp.Pages.Seguros
             listadoImpresora = new List<Impresora>();
             listadoImpresora = _impresora.ObtenerTodo();
         }
-         public void OnPost()
+         public IActionResult OnPost()
         {
             var mensaje = "";  
             var tipoSeguro       = Request.Form["tipoSeguro"];
@@ -41,7 +41,7 @@ namespace HospiEnCasa.WebApp.Pages.Seguros
             var impresora =Request.Form["impresora"];
             
            
-              Console.WriteLine("No" +tipoSeguro + " , " +precio+ " , " + fechaActivacion, fechaVencimiento); 
+            Console.WriteLine("No" +tipoSeguro + " , " +precio+ " , " + fechaActivacion, fechaVencimiento); 
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(tipoSeguro) || String.IsNullOrEmpty(fechaActivacion) || String.IsNullOrEmpty(fechaVencimiento) 
            || String.IsNullOrEmpty(precio)){
@@ -70,8 +70,8 @@ namespace HospiEnCasa.WebApp.Pages.Seguros
                     var result = seguro.Update(N_seguros);
                     if(result > 0){
                         mensaje = "Seguro Agrregado con exito"; 
-                        OnGet();                        
-                        // Response.Redirect("page");  
+                        TempData["mensaje"] = mensaje;            
+                        return RedirectToPage("/Seguros/GestionSeguro");    
                     }else{
                       mensaje= "No se pudo ingresar el registro";
                     }
@@ -79,7 +79,8 @@ namespace HospiEnCasa.WebApp.Pages.Seguros
                     mensaje = "Ya heciste un seguro con esté Nombre";
                 }
             }
-           TempData["mensaje"] = mensaje;
+            TempData["mensaje"] = mensaje;       
+           return Page();
         }
     }
 }

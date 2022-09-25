@@ -9,18 +9,19 @@
     <h1 style="text-align: center;">Inicio de sesión</h1>
 <div class="row mt-5">
     <div class="col-sm-4 offset-sm-4">
-        <form>
+        <form id="idlogin">
+             @Html.AntiForgeryToken()
             <div class="mb-3">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
+                <label for="correo">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Digite su email">
                 <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo electrónico con nadie más..</small>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Digite su password">
             </div>            
-            <button style="width: auto;" type="submit" class="btn btn-primary">Ingresar</button>
+            <button style="width: auto;" type="button" class="btn btn-primary" id="btnLogin">Inisiar sessión</button>
         </form>
     </div>
 </div>

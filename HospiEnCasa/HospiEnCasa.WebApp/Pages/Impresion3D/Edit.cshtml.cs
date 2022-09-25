@@ -44,9 +44,9 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             }else{
                 return Page();
             }
-        }        
-
-        public void OnPost(){
+        }       
+ 
+        public IActionResult OnPost(){
 
             var mensaje = ""; 
 
@@ -70,16 +70,19 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
                 if(result > 0){
 
                     mensaje ="Se actualizaron los datos a "+ cliente;
+                    TempData["mensaje"] = mensaje;
+                    return RedirectToPage("./Gestionimpresion3D");
+                 
                 }else
                 {                   
-                   mensaje ="No fue posible la actualización"+ cliente;                    
+                   mensaje ="No fue posible la actualización "+ cliente;                    
                 }
             }else
             {
                  mensaje ="Error, Se produjo un problemainterno, intente nuevamente ";
             }
             TempData["mensaje"] = mensaje;
-            // return RedirectToPage("./Gestionimpresion3D");
+            return Page();
         }
 
         // public IActionResult OnPostUpdate(){
@@ -104,7 +107,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
                 _impresion3d.Tipo_impresion = impresiones3d.Tipo_impresion;
                 _impresion3d.cantidad = impresiones3d.cantidad;
                 _impresion3d.precio = impresiones3d.precio;
-                _impresion3d.impresora = impresiones3d.impresora;
+               
 
                 var result = impresion.Update(_impresion3d);
 
@@ -131,20 +134,19 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             
                 var _impresion = impresion.Buscar( Int32.Parse(Id) );
 
-                if( impresion != null){
+                if( _impresion != null){
                     
                     var result = impresion.Delete(_impresion);    
 
                   if( result > 0){
-                        return Content("Se eliminó la persona con exito");
+                        return Content("");
                     }else{
-                        return Content("No se logro eliminar la persona");
+                        return Content("");
                     }
                 }else{
 
-                  return Content("No existe la persona a eliminar");
-                    
-                  
+                  return Content("");
+                        
                }
            
         }

@@ -1,0 +1,26 @@
+@page
+@model HospiEnCasa.WebApp.Pages.Login.Login
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<h1 style="text-align: center;">Inicio de sesión</h1>
+<div class="row mt-5">
+    <div class="col-sm-4 offset-sm-4">
+        <form id="idlogin">
+             @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label for="correo">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Digite su email">
+                <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo electrónico con nadie más..</small>
+            </div>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Digite su password">
+            </div>            
+            <button style="width: auto;" type="button" class="btn btn-primary" id="btnLogin">Inisiar sessión</button>
+        </form>
+    </div>
+</div>

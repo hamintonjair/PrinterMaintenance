@@ -35,7 +35,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
            listado_Rol = rol.ObtenerTodo();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             var mensaje = "";   
             var _rol     = Request.Form["rol"];
@@ -50,7 +50,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
            if(String.IsNullOrEmpty(_rol) || String.IsNullOrEmpty(password)){
 
                  mensaje = "Error, debes llenar todos los campos";
-                  OnGet();    
+               
            }else{
 
                 if (validado != null)
@@ -67,8 +67,9 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
                     if(result > 0){
                        mensaje ="Rol agregado con exito";
-                       OnGet();                 
-                        // Response.Redirect("page");  
+                       TempData["mensaje"] = mensaje;
+                       return RedirectToPage("/Personas/Roles");                 
+                      
                     }else{
                         mensaje = "No se pudo ingresar el registro";
                     }
@@ -76,9 +77,10 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                 {
                   mensaje = "No se puede duplicar el rol";
                 }
-           }
-         TempData["mensaje"] = mensaje;
-           
+           }  
+            TempData["mensaje"] = mensaje;          
+            return Page();
+          
         }
     }
 }

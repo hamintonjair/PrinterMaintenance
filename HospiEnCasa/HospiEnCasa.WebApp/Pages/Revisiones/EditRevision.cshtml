@@ -1,0 +1,114 @@
+@page
+@model HospiEnCasa.WebApp.Pages.Revisiones.EditRevision
+@{
+    ViewData["Title"] = "Actualizar Registros de Revisión";
+    var _revision = Model.revision;
+}
+
+<h1>@ViewData["Title"]</h1>
+@if (TempData["mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["mensaje"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<div>
+    <main class="app-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <form method="post" style="background-color:#2668AC;">
+                        <input type="hidden" id="id" name="id" value="@_revision.id">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Tecnico asignado</label>
+                                <input type="text" class="form-control" name="tecnico" value="@_revision.persona.nombre"
+                                    disabled>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Impresora</label>
+                                <input type="text" class="form-control" name="impresora" value="@_revision.impresora.nombre"
+                                    disabled>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label  style="color: #FFFDEE;">Estado</label>                               
+                                <input type="text" class="form-control"  value="@_revision.estado" disabled>                             
+                        
+                            </div>
+                             <div class="form-group col-md-2">
+                                <label  style="color: #FFFDEE;">Cambiar Estado</label>
+                                <select type="text" class="form-control" name="estado"> 
+                                    <option value="Seleccionar" selected="selected">Seleccionar..</option>                            
+                                    <option value="1">Proceso</option>
+                                    <option value="2">Finalizado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label  style="color: #FFFDEE;">Tipo de revisión</label>
+                                    <input type="text" class="form-control"   value="@_revision.revision" disabled>                                    
+                                
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label  style="color: #FFFDEE;">Cambiar Tipo</label>
+                                <select type="text" class="form-control" name="revision">
+                                    <option value="Seleccionar" selected="selected">Seleccionar..</option>
+                                    <option value="1">Interno</option>
+                                    <option value="2">Externo</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Cambio de Repuesto </label>
+                                <input type="text" class="form-control" name="repuesto" value="@_revision.repuesto.n_Repuesto"
+                                    disabled>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Precio </label>
+                                <input type="precio" name="precio" class="form-control" placeholder="Editar Precio"
+                                    value="@_revision.valor">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label  style="color: #FFFDEE;">Correo electrónico </label>
+                                <input type="text" class="form-control" name="email" value="@_revision.persona.email" disabled>
+
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label  style="color: #FFFDEE;">Actualización del software</label>
+                                 <input type="text" class="form-control"   value="@_revision.actualizacion" disabled>  
+                            </div>
+                             <div class="form-group col-md-3">
+                                <label  style="color: #FFFDEE;">Cambiar Actualización</label>
+                                <select type="text" class="form-control" name="actualizacion">
+                                    <option value="Seleccionar" selected="selected">Seleccionar..</option>
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label  style="color: #FFFDEE;">Detalles de la revisión</label>
+                                <input type="text" name="detalle" class="form-control" placeholder=" Actualizar detalles"
+                                    value="@_revision.detalles">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Fecha de Revisión</label>
+                                <input class="form-control" type="date" id="fecha" name="fecha" value="" min="10"
+                                    max="10" placeholder="01-02-2017" value="@_revision.fecha_revision">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="width: auto;" type="submit" class="btn btn-success">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div>

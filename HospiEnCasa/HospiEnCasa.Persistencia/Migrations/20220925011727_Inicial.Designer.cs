@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospiEnCasa.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220922192848_Inicial")]
+    [Migration("20220925011727_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,15 +57,10 @@ namespace HospiEnCasa.Persistencia.Migrations
                     b.Property<string>("cliente")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("impresoraid")
-                        .HasColumnType("int");
-
                     b.Property<string>("precio")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
-
-                    b.HasIndex("impresoraid");
 
                     b.ToTable("Impresion3D");
                 });
@@ -371,15 +366,6 @@ namespace HospiEnCasa.Persistencia.Migrations
                         .HasForeignKey("personaid");
 
                     b.Navigation("persona");
-                });
-
-            modelBuilder.Entity("HospiEnCasa.Dominio.Impresiones3D", b =>
-                {
-                    b.HasOne("HospiEnCasa.Dominio.Impresora", "impresora")
-                        .WithMany()
-                        .HasForeignKey("impresoraid");
-
-                    b.Navigation("impresora");
                 });
 
             modelBuilder.Entity("HospiEnCasa.Dominio.Impresora", b =>

@@ -12,8 +12,6 @@ namespace HospiEnCasa.Dominio
        public string Tipo_impresion { get; set; }
        public string cantidad { get; set; }
        public string precio { get; set; }  
-           //agregación  
-       public Impresora impresora { get; set; }       
 
     }
 }

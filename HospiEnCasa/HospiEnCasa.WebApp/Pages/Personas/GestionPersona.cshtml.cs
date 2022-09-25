@@ -37,7 +37,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
  
         }       
 
-        public void OnPost(){
+        public IActionResult OnPost(){
 
             var mensaje = "";       
             
@@ -53,7 +53,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
              
              var _persona = "";
            //traemos el listado de personas para poder sacar la cedula y comparar           
-            OnGet();
+             OnGet();
              foreach (var p in listadoPersona)
             {
                  _persona = p.cedula;
@@ -72,7 +72,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
            ||  String.IsNullOrEmpty(nivel_Estudio)){
 
                  mensaje = "Error, debes llenar todos los campos";               
-                 OnGet();    
+              
            
            }
            if ( _persona != identificacion ){
@@ -103,8 +103,9 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                       
                       
                     if(result > 0){
-                        mensaje = "Nivel de estudio creado con exito" ;                    
-                        OnGet();     
+                        mensaje = "Nivel de estudio creado con exito" ; 
+                        TempData["mensaje"] = mensaje;                   
+                        return RedirectToPage("/Personas/GestionPersona");    
                 
                     }else{
                         mensaje = "No se pudo agregar el registro";                   
@@ -113,8 +114,8 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                     mensaje = "Error, No se pudo agregar el registro";                  
                 }              
            }
-     
-         TempData["mensaje"] = mensaje;
+            TempData["mensaje"] = mensaje;     
+            return Page();        
 
         }
         //https://www.youtube.com/watch?v=3mu2K5vXcxc&ab_channel=render2web

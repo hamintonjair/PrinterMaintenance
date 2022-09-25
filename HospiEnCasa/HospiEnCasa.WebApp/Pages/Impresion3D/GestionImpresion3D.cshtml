@@ -1,4 +1,4 @@
-@page
+@page "/impresiones3D"
 @model HospiEnCasa.WebApp.Pages.Impresion3D.GestionImpresion3D
 @{
     ViewData["Title"] = "Registro de Impresiones 3D";
@@ -36,8 +36,7 @@
                         <th>Cliente</th>
                         <th>Tipo de impresión</th>
                         <th>Cantiddad</th>
-                        <th>Precio</th>
-                        <th>Empresora</th>
+                        <th>Precio</th>                       
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -50,15 +49,11 @@
                             <td>@_impresion.cliente</td>
                             <td>@_impresion.Tipo_impresion</td>
                             <td>@_impresion.cantidad</td>
-                            <td>@_impresion.precio</td>
-                            <td>@_impresion.impresora.nombre</td>                            
+                            <td>@_impresion.precio</td>                                                      
                             <td>
-                                <a title="Ver" class="btn btn-info btnVer " id="btnVer"><i
-                                    class="fa-sharp fa-solid fa-eye"></i></a>
-                                <a title="Editar" class="btn btn-success " id="btnEdit"><i
-                                    class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                <a title="Eliminar" class="btn btn-danger btnEliminar" ><i
-                                    class="fa-regular fa-trash-can"></i></a>
+                                <a title="Ver" class="btn btn-info btnVer " id="btnVer"><i class="fa-sharp fa-solid fa-eye"></i></a>
+                                <a asp-page="./Edit" asp-route-id="@_impresion.id" title="Editar" class="btn btn-success "><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                <a title="Eliminar" class="btn btn-danger btnEliminar" ><i class="fa-regular fa-trash-can"></i></a>
 
                             </td>
                         </tr>
@@ -69,20 +64,20 @@
     </div>
 </div>
 @* Editar *@
-<div class="modal fade" id="FormModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+@* <div class="modal fade" id="FormModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header " style="background-color:#37a3d1;">
+        <div class="modal-content" style="background-color:#37a3d1;">
+            <div class="modal-header " style="background-color:#2668AC ;">
 
-                <h5 class="modal-title" id="exampleModalLabel">Actualizar Registros de Impresiones 3D</h5>
+                <h5 class="modal-title"  style="color:#FFFDEE ;"  id="exampleModalLabel">Actualizar Registros de Impresiones 3D</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
 
             </div>
             <div class="modal-body">
-                <form action="" id="formEdit">
+                <form method="post" id="formEdit">
                     <input type="hidden" id="id" name="id">
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -104,33 +99,20 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Precio</label>
-                            <input type="text" id="precio" name="precio" class="form-control"
+                            <input type="text" id="_precio" name="_precio" class="form-control"
                                 placeholder="Editar precio">
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label>Impresora (<font color="red">*</font>)</label>
-                            <select name="impresora" type="text" class="form-control" required="">
-                                <option value="" selected="selected">Seleccionar..</option>
-                                @foreach (var im in Model.listadoImpresora)
-                                {
-                                    <option value="@im.id">@im.nombre</option>
-                                }
-                            </select>
+                    </div>                  
+                        <div class="modal-footer">
+                            <button style="width: auto;" type=" reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            <button style="width: auto;" type=" submit" class="btn btn-success">Actualizar</button>
                         </div>
-                    </div>
-
                 </form>
             </div>
-            <div class="modal-footer">
-                <button style="width: auto;" type=" reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                <button style="width: auto;" type=" button" class="btn btn-success"
-                    id="btnActualizar">Actualizar</button>
-            </div>
+            
         </div>
     </div>
-</div>
+</div> *@
 
 @* Insertar *@
 <div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -173,23 +155,11 @@
                             <input type="text" id="precio" name="precio" class="form-control" placeholder="Precio"
                                 required="">
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label>Impresora (<font color="red">*</font>)</label>
-                            <select name="impresora" type="text" class="form-control" required="">
-                                <option value="" selected="selected">Seleccionar..</option>
-                                @foreach (var im in Model.listadoImpresora)
-                                {
-                                    <option value="@im.id">@im.nombre</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
+                    </div>                    
                     <div class="modal-footer">
                         <button style="width: auto;" type="reset" class="btn btn-danger"
                             data-dismiss="modal">Cerrar</button>
-                        <button style="width: auto;" type=" submit" class="btn btn-success">Guardar</button>
+                        <button style="width: auto;" type="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -208,9 +178,9 @@
                     </botón>
             </div>
             <div class="modal-body">
-                <h3 class=" text-align: center;"> ¿Deseas eliminar la Impresión 3D?</h3>
+                <h3 class=" text-align: center;"> ¿Deseas eliminar la Impresión 3D de?</h3>
                 <input type="hidden" name="idImpresion3dEliminar" id="idImpresion3dEliminar">
-                <input  style="border: 0;" type="text" name="idImpresionEliminar" id="idImpresionEliminar" disabled>
+                <input  style="border: 0;" type="text" name="idNombreEliminar" id="idNombreEliminar" disabled>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btnEliminar">Si</button>
@@ -235,30 +205,24 @@
                     <p class="text-primary">
                     </p>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Cliente</label>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-8">
                             <input style="border: 0;" type="text" id="VerCliente" name="VerCliente" disabled>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>Cantidad</label>
+                        <div class="form-group col-md-4">
+                            <label>Cantidad</label>                            
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-8">
                             <input style="border: 0;" type="text" id="verCantidad" name="verCantidad" disabled>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <td>Precio</td>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-8">
                             <input style="border: 0;" type="text" id="verPrecio" name="verPrecio" disabled>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <td>Impresora</td>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <input style="border: 0;" type="text" id="verImpresora" name="verImpresora" disabled>
-                        </div>
+                        </div>                                 
                         <hr>
                     </div>
                     <div class="modal-footer">

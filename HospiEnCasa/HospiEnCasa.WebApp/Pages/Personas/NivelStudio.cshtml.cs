@@ -29,7 +29,7 @@ namespace HospiEnCasa.WebApp.Pages.Personas
             listadoNivelEstudio = studio.ObtenerTodo();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             var mensaje = "";    
 
@@ -37,13 +37,13 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
             var _nivelStudio = "";
            //traemos el listado de personas para poder sacar la cedula y comparar           
-            OnGet();
+             OnGet();
             foreach (var p in listadoNivelEstudio)
             {
                  _nivelStudio = p.estudio;
             }
             if(_nivelStudio == nivelStudio){
-                  mensaje = "¡Atención!,Ya heciste un Tipo de impresora con este Nombre " + nivelStudio;           
+                  mensaje = "¡Atención!,Ya heciste un nivel de estudio con este Nombre " + nivelStudio;           
             }
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(nivelStudio)){
@@ -66,8 +66,8 @@ namespace HospiEnCasa.WebApp.Pages.Personas
 
                         if(result > 0){
                             mensaje = "Nivel de estudio agregado con exito";
-                            OnGet();                   
-                            // Response.Redirect("page");  
+                            TempData["mensaje"] = mensaje;              
+                            return RedirectToPage("/Personas/NivelStudio");     
                         }else{
                         mensaje = "No se pudo ingresar el registro";
                         }
@@ -76,8 +76,9 @@ namespace HospiEnCasa.WebApp.Pages.Personas
                     }
                
            }
-
-           TempData["mensaje"] = mensaje;
+            TempData["mensaje"] = mensaje;      
+            return Page();   
+          
         }
     }
 }

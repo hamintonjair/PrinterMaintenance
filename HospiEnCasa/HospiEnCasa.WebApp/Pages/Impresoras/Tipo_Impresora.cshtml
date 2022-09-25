@@ -21,7 +21,7 @@
     <div class="col-sm-12">
         <button style="width: auto;" type="button" class="btn btn-primary" data-toggle="modal"
             data-target="#FormModal">Tipo de Impresora</button>
-        <a style="width: auto; class="btn btn-primary" asp-page="/Impresoras/GestionImpresora">ir a Impresoras</a>
+        <a style="width: auto;" class="btn btn-primary" asp-page="/Impresoras/GestionImpresora">ir a Impresoras</a>
     </div>
 </div>
 
@@ -44,10 +44,13 @@
                             <td scope="row">@tipoImpresora.id</td>
                             <td>@tipoImpresora.nombre_impresora</td>
                             <td>
-                                <button asp-controller="Registro" asp-action="Edit" title="Editar" asp-route-id="1"
-                                class="btn btn-info"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
-                                <button asp-controller="Registro" asp-action="Delete" title="Eliminar" asp-route-id="1"
-                                class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
+                               <a title="Ver" class="btn btn-info btnVer " id="btnVer"><i
+                                    class="fa-sharp fa-solid fa-eye"></i></a>
+                                <a title="Editar" class="btn btn-success " id="btnEdit"><i
+                                    class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                <a title="Eliminar" class="btn btn-danger btnEliminar" ><i
+                                    class="fa-regular fa-trash-can"></i></a>
+
                             </td>
                         </tr>
                     }

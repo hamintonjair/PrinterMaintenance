@@ -28,28 +28,29 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
             listadoTipoImpresora = tipo_Impresora.ObtenerTodo();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             var mensaje = "";  
             var _tipoImp = "";  
             var tipoImpresora = Request.Form["tipoImpresora"];           
-          
+             OnGet();
             //recorremos el listado para sacar el datos que se necesita para comparar
-            OnGet();
+          
             foreach (var p in listadoTipoImpresora)
             {
                  _tipoImp = p.nombre_impresora;
             }
 
             if(_tipoImp == tipoImpresora){
-                mensaje = "Ya heciste un tipo de impresora con este nombre " + tipoImpresora ;           
+                mensaje = "Ya heciste un tipo de impresora con este nombre " + tipoImpresora ;    
+                 
             }
 
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(tipoImpresora)){
 
                  mensaje= "Error, debes llenar todos los campos";
-                     
+                
            }
            
            //si es diferente ingresa a la consicion
@@ -63,16 +64,18 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
                 var result = tipo_Impresora.AdicionarTipoImpresora(N_tipoImpresora);
 
                 if(result > 0){
-                        mensaje = "Tipo de impresora Agregado";  
-                        OnGet();                        
-                        // Response.Redirect("page");  
+                        mensaje = "Tipo de impresora Agregado"; 
+                        TempData["mensaje"] = mensaje;        
+                       return RedirectToPage("/Impresoras/Tipo_Impresora");                             
+                       
                 }else{
                         mensaje = "No se pudo ingresar el registro";
-                       
+                        TempData["mensaje"] = mensaje; 
                 }             
            
            }
-           TempData["mensaje"] = mensaje;           
+          TempData["mensaje"] = mensaje;      
+          return Page();
         }
     }
 }

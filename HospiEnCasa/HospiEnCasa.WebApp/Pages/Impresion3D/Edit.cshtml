@@ -1,10 +1,50 @@
-@page
+@page "/Actualizar-Impresion3D"
 @model HospiEnCasa.WebApp.Pages.Impresion3D.Edit
 @{
     ViewData["Title"] = "Actualizar Registros de Impresiones 3D";
-
+    var impresion = Model.impresiones;
 }
 
 <h1>@ViewData["Title"]</h1>
-
-
+<div>
+    <main class="app-content" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <form method="post" id="formEdit" style="background-color:#2668AC ;">
+                        <input type="hidden" id="id" name="id" value="@impresion.id">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label style="color: #FFFDEE;">Cliente</label>
+                                <input type="text" id="cliente" name="cliente" class="form-control"
+                                    placeholder="Editar Cliente" value="@impresion.cliente">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label style="color: #FFFDEE;">Tipo de impresón</label>
+                                <input type="text" id="impresion3d" name="impresion3d" class="form-control"
+                                    placeholder="Editar tipo de impresión" value="@impresion.Tipo_impresion">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label style="color: #FFFDEE;">Cantidad</label>
+                                <input type="text" id="cantidad" name="cantidad" class="form-control"
+                                    placeholder="Editar cantidad" value="@impresion.cantidad">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label style="color: #FFFDEE;">Precio</label>
+                                <input type="text" id="precio" name="precio" class="form-control"
+                                    placeholder="Editar precio" value="@impresion.precio">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            @* <button style="width: auto;" type=" reset" class="btn btn-info"
+                                asp-page="/Impresion3D/GestionImpresion3D">Volver</button> *@
+                            <button style="width: auto;" type="submit" class="btn btn-success">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div>

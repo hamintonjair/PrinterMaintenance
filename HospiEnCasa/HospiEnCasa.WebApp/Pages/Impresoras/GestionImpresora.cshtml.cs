@@ -38,7 +38,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
             listadoImpresora = _impresora.ObtenerTodo(); 
         }
 
-        public void OnPost(){
+        public IActionResult OnPost(){
  
              var mensaje = "";     
 
@@ -52,9 +52,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
              var volumenImp          = Request.Form["volumenImp"];
              var pais                = Request.Form["pais"];
              var detalles            = Request.Form["detalles"];
-             var otrasCaract         = Request.Form["otrasCaract"]; 
-                
-          
+             var otrasCaract         = Request.Form["otrasCaract"];  
 
             //validamos que no exista para poder regiostrarlo
             var validado = tipo_Impresora.Buscar(Int32.Parse(tipoImpresora));
@@ -93,7 +91,8 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
                     if(result > 0 ){
 
                         mensaje = "Impresora agregada con exito";
-                        OnGet();    
+                        TempData["mensaje"] = mensaje;
+                        return RedirectToPage("/Impresoras/GestionImpresora");           
                 
                     }else{
                         mensaje = "No se pudo agregar el registro";
@@ -102,6 +101,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
                 }                                 
             }
             TempData["mensaje"] = mensaje;
+            return Page();
        }
     }
 }

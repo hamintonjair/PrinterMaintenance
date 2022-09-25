@@ -36,7 +36,7 @@ namespace HospiEnCasa.Persistencia
         }
         //listar
         List<Impresiones3D> IImpresion3DRepository.ObtenerTodo(){
-            return _context.Impresion3D.Include(p => p.impresora).ToList();
+            return _context.Impresion3D.ToList();
         }
        //buscar por nombre
         IEnumerable<Impresiones3D> IImpresion3DRepository.FindByName(string name){

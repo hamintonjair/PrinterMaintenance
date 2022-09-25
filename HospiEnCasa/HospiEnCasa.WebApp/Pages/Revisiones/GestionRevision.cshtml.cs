@@ -43,7 +43,7 @@ namespace HospiEnCasa.WebApp.Pages.Revisiones
             listadoImpresora = _Impresora.ObtenerTodo();      
         }  
 
-         public void OnPost(){
+         public IActionResult OnPost(){
  
              var mensaje = "";     
 
@@ -62,9 +62,8 @@ namespace HospiEnCasa.WebApp.Pages.Revisiones
             var validadoT = _persona.Buscar(Int32.Parse(tecnico));
             var validadoI = _Impresora.Buscar(Int32.Parse(impresora));
             var validadoR = _repuestos.Buscar(Int32.Parse(repuesto));
-            var validadoC = _persona.Buscar(Int32.Parse(correo));
-            
-                mensaje = "Error, debes llenar todos los campos "+_actualizacion;      
+            var validadoC = _persona.Buscar(Int32.Parse(correo));            
+             
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(impresora) || String.IsNullOrEmpty(tecnico) || String.IsNullOrEmpty(fecha)
            || String.IsNullOrEmpty(_estado) || String.IsNullOrEmpty(revision) || String.IsNullOrEmpty(precio)
@@ -103,7 +102,8 @@ namespace HospiEnCasa.WebApp.Pages.Revisiones
                     if(result > 0 && result2 > 0){
 
                         mensaje = "Revision asignado con exito";
-                        OnGet();    
+                        TempData["mensaje"] = mensaje;
+                        return RedirectToPage("/Revisiones/GestionRevision");       
                 
                     }else{
                         mensaje = "No se pudo asignarla revisión";
@@ -111,7 +111,7 @@ namespace HospiEnCasa.WebApp.Pages.Revisiones
                     }        
                 }                                 
             }
-            TempData["mensaje"] = mensaje;
+             return Page(); 
        }
     }
 }

@@ -35,52 +35,49 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             return Page();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             var mensaje = ""; 
 
             var cliente        = Request.Form["cliente"];
             var Tipo_impresion = Request.Form["impresion3d"];
             var cantidad       = Request.Form["cantidad"];
-            var precio         = Request.Form["precio"];
-            var impresora      = Request.Form["impresora"];
+            var precio         = Request.Form["precio"];          
             
 
             //validamos que no exista para poder regiostrarlo
-            var validado = _impresora.Buscar(Int32.Parse(impresora));
+            // var validado = _impresora.Buscar(Int32.Parse(impresora));
             //VALIDAMOS SI EL DATO INGRESADO ES VACIO
            if(String.IsNullOrEmpty(cliente) || String.IsNullOrEmpty(Tipo_impresion) || String.IsNullOrEmpty(cantidad) || String.IsNullOrEmpty(precio)){
 
                   mensaje = "Error, debes llenar todos los campos";
-                  OnGet();    
+                
            }else{
           
-                var N_Imppresion3D = new Impresiones3D{
-                 cliente = cliente,
-                 Tipo_impresion = Tipo_impresion,
-                 cantidad = cantidad,
-                 precio = precio
-            };
-            if(validado.id > 0){
+                 var N_Imppresion3D = new Impresiones3D{
+                        cliente = cliente,
+                        Tipo_impresion = Tipo_impresion,
+                        cantidad = cantidad,
+                        precio = precio
+                    };
+                     var result =  impresion.AdicionarImpresiones3D(N_Imppresion3D);
 
-                    impresion.AdicionarImpresiones3D(N_Imppresion3D);
-
-                    N_Imppresion3D.impresora = validado;
-                    var result = impresion.Update(N_Imppresion3D);
+                    // N_Imppresion3D.impresora = validado;
+                    // var result = impresion.Update(N_Imppresion3D);
 
                     if(result > 0){
                         mensaje = "Impresión agregado con exito";  
-                        OnGet();                       
-                        // Response.Redirect("page");  
-                        //  RedirectToPage("./Page");               
+                        TempData["mensaje"] = mensaje;
+                        return RedirectToPage("/Impresion3D/GestionImpresion3D");                     
+                                   
                     }else{
-                    Console.WriteLine("No se pudo ingresar el registro");
-                    OnGet(); 
+                       mensaje = "No se pudo ingresar el registro";
+                                    
                     }
-                }
-            }
-           
-           TempData["mensaje"] = mensaje;
+              
+            }   
+            TempData["mensaje"] = mensaje;       
+            return Page();
         }
 
      

@@ -27,7 +27,7 @@ namespace HospiEnCasa.WebApp.Pages.Repuestos
             listadoRepuestos = new List<Repuesto>();
             listadoRepuestos = repuestos.ObtenerTodo();
         }
-         public void OnPost()
+         public IActionResult OnPost()
         {
             var mensaje = ""; 
               
@@ -56,8 +56,8 @@ namespace HospiEnCasa.WebApp.Pages.Repuestos
        
                     if(result > 0){
                          mensaje = "Repuesto Agrregado con exito";
-                        OnGet();                          
-                       // Response.Redirect("/Impresoras/GestionImpresora");  
+                        TempData["mensaje"] = mensaje;                   
+                        return RedirectToPage("/Repuestos/GestionRepuesto");     
                     }else{
                        mensaje = "No se pudo agregar el registro";
                     }
@@ -65,8 +65,8 @@ namespace HospiEnCasa.WebApp.Pages.Repuestos
                       mensaje = "Ya heciste un repuesto con esté Nombre";
                 }
             }
-          TempData["mensaje"] = mensaje;
-           
+           TempData["mensaje"] = mensaje;       
+           return Page();
         }
     }
 }
