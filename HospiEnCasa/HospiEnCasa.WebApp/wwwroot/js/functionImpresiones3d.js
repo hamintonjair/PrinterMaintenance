@@ -79,7 +79,7 @@ $(document).on('click', '#btnActualizar', function (e) {
 
 });
 //eliminar
-$(document).on("click", ".btnEliminar", function (e) {
+$(document).on("click", ".btnEliminarImpresion3d", function (e) {
     e.preventDefault();
 
     $(this).parent().parent().find('td').each(function (index) {
@@ -99,11 +99,11 @@ $(document).on("click", ".btnEliminar", function (e) {
 
 });
 
-$("#btnEliminar").click(function () {
+$("#btnEliminarImpresion3d").click(function () {
 
     $.ajax({
         type: "POST",
-        url: "/Impresion3D/Edit?handler=Delete",
+        url: "/Impresion3D/EditImpresion3d?handler=Delete",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         dataType: "html",
         headers: {

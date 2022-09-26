@@ -1,0 +1,84 @@
+@page
+@model HospiEnCasa.WebApp.Pages.Impresoras.EditImpresoras
+@{
+    ViewData["Title"] = "Actualizar Registros de Impresoras";
+    var _impresoras = Model.impresoras;
+}
+
+<h1>@ViewData["Title"]</h1>
+@if (TempData["mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["mensaje"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<div>
+    <main class="app-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <form method="post" style="background-color:#2668AC;">
+                        <input type="hidden" id="id" name="id" value="@_impresoras.id">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Nombre impresora</label>
+                                <input type="text" class="form-control" name="impresora" value="@_impresoras.nombre">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Marca</label>
+                                <input type="text" class="form-control" name="marca" value="@_impresoras.marca">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Tipo Impresora</label>                               
+                                <input type="text" class="form-control" name="tipoImpresora"  value="@_impresoras.tipoImpresora.nombre_impresora" disabled>                                          
+                            </div>                            
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Placa</label>
+                                <input type="text" name="placa" class="form-control"   value="@_impresoras.placa" >                                              
+                            </div>                           
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Fecha de Ingreso </label>
+                                <input type="date" class="form-control" name="fechaMantenimiento" value="@_impresoras.fecha_mantenimiento">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Año modelo </label>
+                                <input type="date" name="fechaModelo" class="form-control" placeholder="Editar Precio"
+                                    value="@_impresoras.ano_modelo">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Velocidad Impresión </label>
+                                <input type="text" class="form-control" name="velocidadImp" value="@_impresoras.velocidad_imp" >
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">Volumen Impresión</label>
+                                 <input type="text" class="form-control" name="volumenImp"  value="@_impresoras.volumen_imp">  
+                            </div>
+                             <div class="form-group col-md-4">
+                                <label  style="color: #FFFDEE;">País</label>
+                               <input type="text" class="form-control" name="pais"  value="@_impresoras.pais_origen">  
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label  style="color: #FFFDEE;">Detalles del ingreso</label>
+                                <input type="text" name="detalles" class="form-control" placeholder=" Actualizar detalles"
+                                    value="@_impresoras.detalles">
+                            </div>       
+                        </div>
+                        <div class="modal-footer">
+                            <button style="width: auto;" type="submit" class="btn btn-success">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+<div>

@@ -95,6 +95,7 @@ E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Modulo\Modulos.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Revisiones\GestionRevision.cshtml.g.cs
-E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Impresion3D\Edit.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Login\Login.cshtml.g.cs
 E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Revisiones\EditRevision.cshtml.g.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Impresoras\EditImpresoras.cshtml.g.cs
+E:\Mision_tic\ciclo_3\Proyecto\PrinterMaintenance\HospiEnCasa\HospiEnCasa.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Impresion3D\EditImpresion3d.cshtml.g.cs

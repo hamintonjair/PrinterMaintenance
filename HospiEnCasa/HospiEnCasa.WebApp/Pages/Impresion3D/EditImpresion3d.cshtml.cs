@@ -16,11 +16,11 @@ using HospiEnCasa.Persistencia;
 
 namespace HospiEnCasa.WebApp.Pages.Impresion3D
 {
-    public class Edit : PageModel
+    public class EditImpresion3d : PageModel
     {
-        private readonly ILogger<Edit> _logger;
+        private readonly ILogger<EditImpresion3d> _logger;
 
-        public Edit(ILogger<Edit> logger)
+        public EditImpresion3d(ILogger<EditImpresion3d> logger)
         {
             _logger = logger;
         }

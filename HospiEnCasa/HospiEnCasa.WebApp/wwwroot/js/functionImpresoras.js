@@ -1,5 +1,4 @@
 
-
 //eliminar
 $(document).on("click",".btnEliminar", function(e){
    e.preventDefault();
@@ -8,7 +7,7 @@ $(document).on("click",".btnEliminar", function(e){
        
        switch(index){
            case 0:
-               $('#idTecnicoEliminar').val($(this).text());
+               $('#idImpresoraEliminar').val($(this).text());
                break;  
            case 1:
                $('#idNombreEliminar').val($(this).text());
@@ -17,21 +16,21 @@ $(document).on("click",".btnEliminar", function(e){
 
    });
 
-   $('#modalEliminarRevision').modal('show');
+   $('#modalEliminarImpresora').modal('show');
    
 });
 
-$("#btnEliminarRevision").click(function(){
+$("#btnEliminar").click(function(){
       
    $.ajax({
        type: "POST",
-       url: "/Revisiones/EditRevision?handler=Delete",
+       url: "/Impresoras/EditImpresoras?handler=Delete",
        contentType: "application/x-www-form-urlencoded; charset=utf-8",
        dataType: "html",
        headers: {
            "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
        },
-       data: { "Id" : $("#idTecnicoEliminar").val()},
+       data: { "Id" : $("#idImpresoraEliminar").val()},
        
    })
    .done(function (result) {
@@ -74,26 +73,23 @@ $(document).on("click",".btnVer", function(e){
     switch(index){
        
         case 1:
-            $('#Vertecnico').val($(this).text());
+            $('#Vernombre').val($(this).text());
             break;
         case 2:
-            $('#Verimpresora').val($(this).text());
+            $('#Vermarca').val($(this).text());
             break;
         case 3:
-            $('#Verrepuesto').val($(this).text());
+            $('#Vertipo').val($(this).text());
             break;
         case 4:
-            $('#Verprecio').val($(this).text());
+            $('#Vermantenimiento').val($(this).text());
             break;
         case 5:
-            $('#Verfecha').val($(this).text());
-            break;  
-         case 6:
-             $('#detalle').val($(this).text());
-             break;
+            $('#Verplaca').val($(this).text());
+            break;   
                
     }
   
   }),
-      $('#modalViewRevisiones').modal('show');
+      $('#modalViewImpresoras').modal('show');
 });

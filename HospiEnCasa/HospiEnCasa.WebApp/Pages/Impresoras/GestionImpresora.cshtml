@@ -55,8 +55,7 @@
                          <td>
                           <a title="Ver" class="btn btn-info btnVer " id="btnVer"><i
                                     class="fa-sharp fa-solid fa-eye"></i></a>
-                                <a title="Editar" class="btn btn-success " id="btnEdit"><i
-                                    class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                 <a asp-page="./EditImpresoras" asp-route-id="@_impresoras.id" title="Editar" class="btn btn-success "><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                 <a title="Eliminar" class="btn btn-danger btnEliminar" ><i
                                     class="fa-regular fa-trash-can"></i></a>
 
@@ -134,7 +133,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-8">
-                            <label>Detalles (<font color="red">*</font>)</label>
+                            <label>Detalles del ingreso (<font color="red">*</font>)</label>
                             <textarea  type="text" id="detalles" name="detalles" class="form-control" placeholder="detalles" required=""></textarea>
                         </div>
                         <div class="form-group col-md-4">
@@ -152,3 +151,88 @@
         </div>
     </div>
 </div>
+
+@* eliminar *@
+<div class="modal" tabindex="-1" role="dialog" id="modalEliminarImpresora">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #14465b;">
+                <h5 class="modal-title" style="color:#FFFDEE ;">Revisión de impresora</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times; </span>
+                    </botón>
+            </div>
+            <div class="modal-body">
+                <h3 class=" text-align: center;">¿Deseas eliminar el registro de la revision de?</h3>
+                <input type="hidden" name="idImpresoraEliminar" id="idImpresoraEliminar">
+                <input  style="border: 0;" type="text" name="idNombreEliminar" id="idNombreEliminar" disabled>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnEliminar">Si</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ver *@
+<div class="modal fade" id="modalViewImpresoras" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header header-primary" style="background: #14465b;">
+                <h5 class="modal-title" style="color:#FFFDEE ;" id="titleModal">Datos de la impresiora</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background: #b4dcee;">
+                <form method="post">
+                    <p class="text-primary">
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Impresora</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input style="border: 0;" type="text" id="Vernombre" name="Vernombre" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Marca</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input style="border: 0;" type="text" id="Vermarca" name="Vermarca" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <td>Tipo de impresora</td>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input style="border: 0;" type="text" id="Vertipo" name="Vertipo" disabled>
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label>Fecha de Mantenimiento</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input style="border: 0;" type="text" id="Vermantenimiento" name="Vermantenimiento" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <td>Placa</td>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input style="border: 0;" type="text" id="Verplaca" name="Verplaca" disabled>
+                        </div>                        
+                                          
+                        <hr>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width: auto;" type="reset" class="btn btn-danger"
+                            data-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
