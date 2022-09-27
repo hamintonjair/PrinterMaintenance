@@ -1,4 +1,4 @@
-@page "/impresiones3D"
+@page 
 @model HospiEnCasa.WebApp.Pages.Impresion3D.GestionImpresion3D
 @{
     ViewData["Title"] = "Registro de Impresiones 3D";
@@ -52,8 +52,9 @@
                             <td>@_impresion.precio</td>                                                      
                             <td>
                                 <a title="Ver" class="btn btn-info btnVer " id="btnVer"><i class="fa-sharp fa-solid fa-eye"></i></a>
-                                <a asp-page="./Edit" asp-route-id="@_impresion.id" title="Editar" class="btn btn-success "><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                <a title="Eliminar" class="btn btn-danger btnEliminarImpresion3d" ><i class="fa-regular fa-trash-can"></i></a>
+                                <a asp-page="./EditImpresion3d" asp-route-id="@_impresion.id" title="Editar" class="btn btn-success "><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                  <a title="Eliminar" class="btn btn-danger btnEliminar" ><i
+                                    class="fa-regular fa-trash-can"></i></a>
 
                             </td>
                         </tr>
@@ -63,56 +64,8 @@
         </div>
     </div>
 </div>
-@* Editar *@
-@* <div class="modal fade" id="FormModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content" style="background-color:#37a3d1;">
-            <div class="modal-header " style="background-color:#2668AC ;">
 
-                <h5 class="modal-title"  style="color:#FFFDEE ;"  id="exampleModalLabel">Actualizar Registros de Impresiones 3D</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-
-            </div>
-            <div class="modal-body">
-                <form method="post" id="formEdit">
-                    <input type="hidden" id="id" name="id">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Cliente</label>
-                            <input type="text" id="cliente" name="cliente" class="form-control"
-                                placeholder="Editar Cliente">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Tipo de impresón</label>
-                            <input type="text" id="impresion3d" name="impresion3d" class="form-control"
-                                placeholder="Editar tipo de impresión">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Cantidad</label>
-                            <input type="text" id="cantidad" name="cantidad" class="form-control"
-                                placeholder="Editar cantidad">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Precio</label>
-                            <input type="text" id="_precio" name="_precio" class="form-control"
-                                placeholder="Editar precio">
-                        </div>
-                    </div>                  
-                        <div class="modal-footer">
-                            <button style="width: auto;" type=" reset" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                            <button style="width: auto;" type=" submit" class="btn btn-success">Actualizar</button>
-                        </div>
-                </form>
-            </div>
-            
-        </div>
-    </div>
-</div> *@
+ 
 
 @* Insertar *@
 <div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -170,7 +123,7 @@
 @* eliminar *@
 <div class="modal" tabindex="-1" role="dialog" id="modalEliminar">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content">          
             <div class="modal-header" style="background: #14465b;">
                 <h5 class="modal-title" style="color:#FFFDEE ;">Impresiones 3D</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
@@ -183,8 +136,8 @@
                 <input  style="border: 0;" type="text" name="idNombreEliminar" id="idNombreEliminar" disabled>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btnEliminarImpresion3d">Si</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="Submit" class="btn btn-primary">Si</button>
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">No</button>
             </div>
         </div>
     </div>

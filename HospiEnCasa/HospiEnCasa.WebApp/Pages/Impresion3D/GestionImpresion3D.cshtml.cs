@@ -68,6 +68,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
                     if(result > 0){
                         mensaje = "Impresión agregado con exito";  
                         TempData["mensaje"] = mensaje;
+                        OnGet();
                         return RedirectToPage("/Impresion3D/GestionImpresion3D");                     
                                    
                     }else{
@@ -76,8 +77,34 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
                     }
               
             }   
+            OnGet();
             TempData["mensaje"] = mensaje;       
             return Page();
+        }
+         public IActionResult OnPostDelete(int id){
+
+                 var mensaje = "";              
+               
+                var _impresion = impresion.Buscar(id);
+
+                if( _impresion != null){
+                    
+                    var result = impresion.Delete(_impresion);    
+
+                  if( result > 0){
+                      mensaje ="Registro eliminado correctamente ";      
+                      return RedirectToPage("./Gestionimpresion3D");
+                    }else{
+                       mensaje ="No fue posible la eliminación ";      
+                      return RedirectToPage("./Gestionimpresion3D");
+                    }
+                }else{
+                 mensaje ="Error en el sistema ";
+                 TempData["mensaje"] = mensaje;
+                 return Page();
+                        
+               }
+           
         }
 
      

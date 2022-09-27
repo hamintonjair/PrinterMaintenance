@@ -1,0 +1,31 @@
+@page
+@model HospiEnCasa.WebApp.Pages.Impresoras.EditTipo_Impresora
+@{
+    ViewData["Title"] = "Actualizar tipo de impresora";
+     var Tipo_Impresora = Model.Tipo_Impresora;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+    <main class="app-content" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <form method="post" id="formEdit" style="background-color:#2668AC ;">
+                        <input type="hidden" id="id" name="id" value="@Tipo_Impresora.id">
+                        <div class="form-row">                            
+                            <div class="form-group col-md-12">
+                                <label style="color: #FFFDEE;">Tipo de impresora</label>
+                                <input type="text" id="tipoImpresora" name="tipoImpresora" class="form-control"
+                                    placeholder="Editar tipo de impresora" value="@Tipo_Impresora.nombre_impresora">
+                            </div>
+                        </div>                        
+                        <div class="modal-footer">                           
+                            <button style="width: auto;" type="submit" class="btn btn-success">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div>

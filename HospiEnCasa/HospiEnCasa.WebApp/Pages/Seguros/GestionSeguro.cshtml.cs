@@ -82,5 +82,26 @@ namespace HospiEnCasa.WebApp.Pages.Seguros
             TempData["mensaje"] = mensaje;       
            return Page();
         }
+         public IActionResult OnPostDelete(string Id){
+
+            //  var mensaje = "";   
+               
+                var _seguro = seguro.Buscar( Int32.Parse(Id) );
+    
+                if( _seguro != null){
+                    
+                    var result = seguro.Delete(_seguro);    
+
+                  if( result > 0){
+                        return Content("");
+                    }else{
+                        return Content("");
+                    }
+                }else{
+
+                  return Content("");
+                                   
+               }
+        }
     }
 }

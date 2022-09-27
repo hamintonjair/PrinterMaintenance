@@ -1,0 +1,56 @@
+@page "/Actualizar-Seguro"
+@model HospiEnCasa.WebApp.Pages.Seguros.EditSeguros
+@{
+    ViewData["Title"] = "Actualizar Seguro";
+     var seguro = Model.seguro;
+}
+
+
+<h1>@ViewData["Title"]</h1>
+<div>
+    <main class="app-content" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <form method="post" id="formEdit" style="background-color:#2668AC ;">
+                        <input type="hidden" id="id" name="id" value="@seguro.id">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label style="color: #FFFDEE;">Tipo de seguro</label>
+                                <input type="text" id="tipo_seguro" name="tipo_seguro" class="form-control"
+                                    placeholder="Editar Seguro" value="@seguro.tipo_seguro">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label style="color: #FFFDEE;">Precio</label>
+                                <input type="text" id="precio" name="precio" class="form-control"
+                                    placeholder="Editar Precio" value="@seguro.precio">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label style="color: #FFFDEE;">Fecha de activación</label>
+                                <input type="DATE" id="fecha_activacion" name="fecha_activacion" class="form-control"
+                                    placeholder="Editar de fecha activacion" value="@seguro.fecha_activacion">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label style="color: #FFFDEE;">Fecha de vencimiento</label>
+                                <input type="date" id="fecha_vencimiento" name="fecha_vencimiento" class="form-control"
+                                    placeholder="Editar de fechavencimiento" value="@seguro.fecha_vencimiento">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label style="color: #FFFDEE;">Impresora</label>
+                                <input type="text" id="impresora" name="impresora" class="form-control"
+                                    value="@seguro.impresora.nombre" disabled>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            @* <button style="width: auto;" type=" reset" class="btn btn-info"
+                                asp-page="/Impresion3D/GestionImpresion3D">Volver</button> *@
+                            <button style="width: auto;" type="submit" class="btn btn-success">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div>

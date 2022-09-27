@@ -53,9 +53,9 @@
                         <td>
                          <a title="Ver" class="btn btn-info btnVer " id="btnVer"><i
                                     class="fa-sharp fa-solid fa-eye"></i></a>
-                                <a title="Editar" class="btn btn-success " id="btnEdit"><i
+                                <a asp-page="./EditSeguros" asp-route-id="@seguro.id" title="Editar" class="btn btn-success "><i
                                     class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                <a title="Eliminar" class="btn btn-danger btnEliminar" ><i
+                                <a title="Eliminar" class="btn btn-danger btnEliminarSeguro" ><i
                                     class="fa-regular fa-trash-can"></i></a>
 
                         </td>
@@ -124,3 +124,85 @@
         </div>
     </div>
 </div>
+
+@* eliminar *@
+<div class="modal" tabindex="-1" role="dialog" id="modalEliminarSeguro">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #14465b;">
+                <h5 class="modal-title" style="color:#FFFDEE ;">Revisión de impresora</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times; </span>
+                    </botón>
+            </div>
+            <div class="modal-body">
+                <h3 class=" text-align: center;">¿Deseas eliminar el registro de la revision de?</h3>
+                <input type="hidden" name="idSegurosEliminar" id="idSegurosEliminar">
+                <input  style="border: 0;" type="text" name="idSeguroImpresoraEliminar" id="idSeguroImpresoraEliminar" disabled>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnEliminarSeguros">Si</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+@* ver *@
+<div class="modal fade" id="modalViewSeguro" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header header-primary" style="background: #14465b;">
+                <h5 class="modal-title" style="color:#FFFDEE ;" id="titleModal">Datos de la impresión 3D</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background: #b4dcee;">
+                <form method="post">
+                    <p class="text-primary">
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Tipo de seguro</label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <input style="border: 0;" type="text" id="VertipoSeguro" name="VertipoSeguro" disabled>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Precio</label>                            
+                        </div>
+                        <div class="form-group col-md-8">
+                            <input style="border: 0;" type="text" id="verprecio" name="verprecio" disabled>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <td>Fecha de activación</td>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <input style="border: 0;" type="text" id="verfechaActivacion" name="verfechaActivacion" disabled>
+                        </div>  
+                        <div class="form-group col-md-4">
+                            <td>Fecha de vencimiento</td>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <input style="border: 0;" type="text" id="verfechaVencimiento" name="verfechaVencimiento" disabled>
+                        </div>  
+                        <div class="form-group col-md-4">
+                            <td>Impresora</td>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <input style="border: 0;" type="text" id="verimpresora" name="verimpresora" disabled>
+                        </div>                               
+                        <hr>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width: auto;" type="reset" class="btn btn-danger"
+                            data-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

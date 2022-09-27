@@ -1,4 +1,5 @@
 
+
 using System.Security.Principal;
 using System.Reflection.Metadata;
 using System.Xml.XPath;
@@ -85,70 +86,38 @@ namespace HospiEnCasa.WebApp.Pages.Impresion3D
             return Page();
         }
 
-        // public IActionResult OnPostUpdate(){
+        // public IActionResult OnPostUpdateJson([FromBody]Impresiones3D impresiones3d){
 
-        //     var mensaje = "";           
-          
-        //     mensaje ="Consumo Ajax";
-          
-        //     TempData["mensaje"] = mensaje;
-        //     return Content("impresiones3d");
-        // }
-
-        public IActionResult OnPostUpdateJson([FromBody]Impresiones3D impresiones3d){
-
-            var mensaje = "";          
+        //     var mensaje = "";          
                 
-            var _impresion3d = impresion.Buscar(impresiones3d.id);
+        //     var _impresion3d = impresion.Buscar(impresiones3d.id);
 
-            if(_impresion3d != null ){
+        //     if(_impresion3d != null ){
 
-                _impresion3d.cliente = impresiones3d.cliente;
-                _impresion3d.Tipo_impresion = impresiones3d.Tipo_impresion;
-                _impresion3d.cantidad = impresiones3d.cantidad;
-                _impresion3d.precio = impresiones3d.precio;
+        //         _impresion3d.cliente = impresiones3d.cliente;
+        //         _impresion3d.Tipo_impresion = impresiones3d.Tipo_impresion;
+        //         _impresion3d.cantidad = impresiones3d.cantidad;
+        //         _impresion3d.precio = impresiones3d.precio;
                
 
-                var result = impresion.Update(_impresion3d);
+        //         var result = impresion.Update(_impresion3d);
 
-                if(result > 0){
+        //         if(result > 0){
 
-                    mensaje ="Se actualizaron los datos a "+ _impresion3d.cliente;
-                }else
-                {                   
-                   mensaje ="No fue posible la actualización "+ _impresion3d.cliente;                    
-                }
-            }else
-            {
-                 mensaje ="Error, Se produjo un problemainterno, intente nuevamente ";
-            }
+        //             mensaje ="Se actualizaron los datos a "+ _impresion3d.cliente;
+        //         }else
+        //         {                   
+        //            mensaje ="No fue posible la actualización "+ _impresion3d.cliente;                    
+        //         }
+        //     }else
+        //     {
+        //          mensaje ="Error, Se produjo un problemainterno, intente nuevamente ";
+        //     }
             
-            TempData["mensaje"] = mensaje;
-            return new JsonResult( _impresion3d.id);
+        //     TempData["mensaje"] = mensaje;
+        //     return new JsonResult( _impresion3d.id);
             
-        }
-
-        public IActionResult OnPostDelete(string Id){
-
-            //  var mensaje = "";   
-            
-                var _impresion = impresion.Buscar( Int32.Parse(Id) );
-
-                if( _impresion != null){
-                    
-                    var result = impresion.Delete(_impresion);    
-
-                  if( result > 0){
-                        return Content("");
-                    }else{
-                        return Content("");
-                    }
-                }else{
-
-                  return Content("");
-                        
-               }
-           
-        }
+        // }
+     
     }
 }

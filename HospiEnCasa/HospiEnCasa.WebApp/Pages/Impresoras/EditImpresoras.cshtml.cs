@@ -22,7 +22,7 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
          public Impresora impresoras;
 
         private IImpresorasRepository _impresora = new ImpresorasRepository(new HospiEnCasa.Persistencia.AppContext());
-         public List<Impresora> listadoImpresora {get; set; }
+        public List<Impresora> listadoImpresora {get; set; }
         
         public IActionResult OnGet(int Id)
         {
@@ -95,9 +95,9 @@ namespace HospiEnCasa.WebApp.Pages.Impresoras
         public IActionResult OnPostDelete(string Id){
 
             //  var mensaje = "";   
-            
+               
                 var impresora = _impresora.Buscar( Int32.Parse(Id) );
-
+    
                 if( impresora != null){
                     
                     var result = _impresora.Delete(impresora);    

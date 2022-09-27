@@ -109,15 +109,14 @@ $("#btnEliminarImpresion3d").click(function () {
         headers: {
             "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
         },
-        data: { "Id": $("#idImpresion3dEliminar").val() },
+        data: { "Id": $("#idNombreEliminar").val() },
 
     })
-    .done(function (result) {
-
+    .done(function (result) {         
         eliminado();
 
     })
-    .fail(function (error) {
+    .fail(function (error) {       
         _Error();
     });
 });

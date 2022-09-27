@@ -34,11 +34,12 @@ $("#btnEliminar").click(function(){
        
    })
    .done(function (result) {
-      
+      alert(result);
        eliminado();
      
    })
-   .fail(function (error) {       
+   .fail(function (error) {   
+    alert(error);    
        _Error();
    });
 });
